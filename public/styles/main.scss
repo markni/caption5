@@ -17,8 +17,8 @@ body {
   padding-top: 50px;
   background-color: $amber-light;
   @include transition(background-color 1000ms ease-in);
-
-
+  padding-bottom: 70px;
+  overflow-x: hidden;
 
 }
 
@@ -29,7 +29,10 @@ body {
 .file-picker{
   background-color: transparent;
 
+  @include transform(translateZ(0));
+
   padding: 10px;
+
   @include transition(all 500ms ease-in);
 
   &.dismiss{
@@ -70,8 +73,19 @@ body {
 	text-decoration: none;
 	background-color: $gray-midium; }
 
+  &.nav .open > a{
+	background-color: $gray-midium;
+	+ul.dropdown-menu {
+	  box-shadow: none;
+	}
+  }
+
 }
 
+
+.foot-navbar{
+  background-color: transparent;
+}
 
 
 .sub-editor{
