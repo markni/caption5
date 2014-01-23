@@ -1,0 +1,10 @@
+<div class="header" ng-controller="navbarCtrl">
+	<ul class="navbar  navbar-fixed-top nav nav-pills global-navbar">
+		<li ng-show="item.public || currentUser" ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+			<a ng-href="{{item.link}}">{{item.title}}</a>
+		</li>
+		<li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">LOGIN</a></li>
+		<li ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/signup">SIGN UP</a></li>
+		<li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">LOGOUT</a></li>
+	</ul>
+</div>

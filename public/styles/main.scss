@@ -1,0 +1,222 @@
+@import "compass";
+@import "mixins";
+
+/*angular js preload css*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+$gray-dark: #303030;
+$gray-light: #bcbcbc;
+$gray-midium: #55595b;
+$amber-light: #edece4;
+$white:white;
+$blue-midium:#6EC8F8;
+
+body {
+  padding-top: 50px;
+  background-color: $amber-light;
+  @include transition(background-color 1000ms ease-in);
+
+
+
+}
+
+
+
+
+
+.file-picker{
+  background-color: transparent;
+
+  padding: 10px;
+  @include transition(all 500ms ease-in);
+
+  &.dismiss{
+	margin-top: -250px;
+	opacity: 0;
+  }
+
+}
+
+.video-player{
+  @include transition(all 500ms);
+  //@include transform(perspective(500px) rotateX(15deg));
+
+  &.normalize {
+	@include transform(none);
+  }
+
+}
+
+.global-navbar {
+  background-color: $gray-dark;
+  a {
+	color: $gray-light;
+	&:hover{
+	color:white;
+  }
+  }
+  &.nav-pills > li {
+	font-size: 12px;
+	margin: 0;
+  }
+  min-height: 0px;
+  &.nav-pills > li.active > a, &.nav-pills > li.active > a:hover, &.nav-pills > li.active > a:focus {
+	color: white;
+	background-color: $gray-midium;
+  }
+  &.nav > li > a:hover, &.nav > li > a:focus {
+	text-decoration: none;
+	background-color: $gray-midium; }
+
+}
+
+
+
+.sub-editor{
+  opacity: 0;
+  @include transition(opacity 2500ms);
+  &.show {
+	opacity: 1;
+  }
+
+  .new-cue-time {
+	@include transition(color 200ms);
+	cursor: pointer;
+	color:$gray-light;
+	padding: 0 5px;
+	&:hover{
+	  color:$gray-dark;
+	}
+  }
+
+  .new-cue-time-icon{
+	@include transition(color 200ms);
+	cursor: pointer;
+	color:$gray-light;
+	&:hover{
+	  color:$gray-dark;
+	}
+  }
+
+}
+
+
+.right-col{
+
+  opacity: 0;
+
+  .tools {
+	clear:both;
+	@include transition(opcaity 500ms);
+	opacity: 0.1;
+
+
+
+
+	a {
+	  color:$gray-light;
+	  &:hover {
+		color:$gray-dark;
+
+	  }
+	}
+
+  }
+
+  &:hover{
+	.tools {
+	  opacity: 0.5;
+	}
+  }
+
+  &.show {
+	opacity: 1;
+  }
+
+
+}
+
+.cue-list {
+  width: 100%;
+  $padding:20px;
+  padding: $padding;
+  max-height: 500px;
+  overflow-y: scroll;
+  overflow-x:hidden;
+  background-color: white;
+  position: relative;
+  margin:0;
+  max-width: 400px;
+
+  @include transition(opacity 2500ms);
+
+
+  li {
+	min-width: 340px;
+	i{
+	  padding-left: 5px;
+	}
+	&:hover{
+	  .cue-delete{
+		opacity: 0.8;
+		&:hover{
+		  opacity: 1;
+
+		}
+	  }
+	}
+	&:nth-of-type(even){
+	  background-color: $amber-light;
+
+	  &:hover{
+		background-color: $blue-midium;
+		color:white;
+
+	  }
+
+	}
+
+	&:nth-of-type(odd){
+	  background-color: white;
+
+	  &:hover{
+		background-color: $blue-midium;
+		color:white;
+	  }
+
+	}
+  }
+  .cue-grid {
+	display: inline-block;
+  	padding: 0 10px;
+	vertical-align: bottom;
+
+  }
+  .cue-begin {
+	width: 100px;
+
+
+  }
+  .cue-delete {
+	color:white;
+	@include transition(all 300ms);
+	opacity: 0;
+
+
+
+  }
+  .cue-text {
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 200px;
+	text-overflow: ellipsis;
+  }
+}
+
+//Helper Classes
+.pointer {cursor: pointer !important;}
+.hint {font-size: 14px !important;}
+
+

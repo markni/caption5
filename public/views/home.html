@@ -1,0 +1,73 @@
+<div class="jumbotron text-center file-picker" ng-class='{dismiss:!!project.start}'>
+	<h1>Caption5</h1>
+
+	<p class="lead">
+		A simple Caption Maker in your browser
+	</p>
+
+	<p><a class="btn btn-lg btn-info" ng-hide='videoUrl' ng-click="openVideo()">Start by picking a video from
+		your computer</a></p>
+
+	<p><a class="btn btn-lg btn-danger" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
+
+	<p class="hint" ng-show='videoUrl'>Not the the video you looking for? <a class="pointer" ng-click="openVideo()">Click
+		here to pick another</a></p>
+
+
+</div>
+
+<div drop-zone class="video-drop-zone col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-2  col-sm-6 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+
+	<video class="video-player" ng-class='{normalize:!!project.start}' ng-click='togglePause($event)'  id="video" ng-src="{{videoUrl}}" controls autoplay="autoplay" style="width:100%" poster="/images/test.jpg"></video>
+
+
+	<div class="form-group sub-editor" ng-class='{show:!!project.start}'>
+		<form ng-submit='createCue()'>
+			<input placeholder="Type in captions here and press enter" type="text" ng-keydown='onEdit($event)' class="form-control" ng-model='newCue.text'>
+		</form>
+		<div class="pull-left" ng-show='editMode'><i ng-click="modifyTime('begin',-200)" class="fa fa-step-backward new-cue-time-icon" title="-200ms"></i><span class="new-cue-time" title="seek to this time" ng-click='navigatedTo(newCue.begin,false)'>{{convert(newCue.begin)}}</span><i ng-click="modifyTime('begin',200)" class="fa fa-step-forward  new-cue-time-icon" title="+200ms"></i></div>
+		<div class="pull-right" ng-show='editMode'><i ng-click="modifyTime('end',-200)" class="fa fa-step-backward  new-cue-time-icon" title="-200ms"></i><span class="new-cue-time" title="seek to this time" ng-click='navigatedTo(newCue.end,false)'>{{convert(newCue.end)}}</span><i  ng-click="modifyTime('end',200)" class="fa fa-step-forward  new-cue-time-icon" title="+200ms"></i></div>
+	</div>
+
+</div>
+
+<div class="right-col col-lg-3 col-md-4 col-sm-5 " ng-class='{show:!!project.start}'>
+
+
+
+	<ul class="nav nav-pills nav-stacked cue-list pull-right" >
+
+
+	<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index"  class="pointer">
+		<i class="fa fa-times-circle cue-delete" ng-click='removeCue(cue)'></i>
+		<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)' >{{convert(cue.begin)}}</span>
+		<span class="cue-grid cue-text" ng-click='editCue(cue)'>{{cue.text}}</span>
+	</li>
+
+
+
+
+</ul>
+	<div class=" tools">
+		<a alt='load' title='load' class="pull-right pointer btn-xs" ng-click='openSub()'><i class="fa fa-folder-open"></i></a>
+
+		<a alt='load auto save' title='load auto save' class="pull-right pointer btn-xs" ng-click='loadFromLocal()'><i class="fa fa-cloud-download"></i></a>
+		<a alt='download' title='download' class="pull-right pointer btn-xs" ng-click='download("srt")'><i class="fa fa-download"></i></a>
+</div>
+
+</div>
+
+
+
+<div class="row footer">
+
+</div>
+
+<input type="file" id="video-selector" class="hidden" video-selector accept=".mp4,video/*">
+<input type="file" id="sub-selector" class="hidden" sub-selector accept=".srt">
+
+<div>
+	<!--debug:-->
+	<!--<textarea id="debug" rows='10'></textarea>-->
+
+</div>
