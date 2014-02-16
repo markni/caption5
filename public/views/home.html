@@ -49,6 +49,7 @@
 
 </ul>
 	<div class=" tools">
+		<a alt='save project' title='save project' class="pull-right pointer btn-xs" ng-click='saveProject()'><i class="fa fa-save"></i></a>
 		<a alt='load' title='load' class="pull-right pointer btn-xs" ng-click='openSub()'><i class="fa fa-folder-open"></i></a>
 
 		<a alt='load auto save' title='load auto save' class="pull-right pointer btn-xs" ng-click='loadFromLocal()'><i class="fa fa-cloud-download"></i></a>
@@ -62,7 +63,7 @@
 
 
 <input type="file" id="video-selector" class="hidden" video-selector accept=".mp4,video/*">
-<input type="file" id="sub-selector" class="hidden" sub-selector accept=".srt">
+<input type="file" id="sub-selector" class="hidden" sub-selector accept=".srt,.ssa,.ass">
 
 <div>
 	<!--debug:-->
