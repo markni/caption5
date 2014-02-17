@@ -32,6 +32,14 @@ app.controller('homeCtrl', function ($scope, $http, $sce, Project) {
 		]
 	};
 
+	$scope.removeProject = function(){
+		if ($scope.project_id){
+			Project.remove({ id:$scope.project_id },function(){
+				$scope.project_id = null;
+			});
+		}
+	}
+
 	$scope.saveProject = function() {
 		if ($scope.project_id){
 			Project.update({ id:$scope.project_id }, $scope.project);
@@ -43,8 +51,6 @@ app.controller('homeCtrl', function ($scope, $http, $sce, Project) {
 
 			});
 		}
-
-
 	};
 
 	$scope.generatedFiles = {
