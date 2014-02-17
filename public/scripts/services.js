@@ -132,7 +132,12 @@ app.factory('User', function ($resource) {
 
 
 app.factory('Project',function($resource){
-	return $resource('/api/projects/:id',null,{
+	return $resource('/api/project/:id',null,{
 		update: {method:'PUT'}
 	});
+});
+
+app.factory('Projects',function($resource){
+	return $resource('/api/projects/');
+
 });

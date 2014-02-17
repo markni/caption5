@@ -1,4 +1,4 @@
-app.controller('homeCtrl', function ($scope, $http, $sce, Project) {
+app.controller('homeCtrl', function ($scope, $http, $sce, Project, Projects) {
 
 	var v = document.getElementById('video');
 
@@ -51,6 +51,11 @@ app.controller('homeCtrl', function ($scope, $http, $sce, Project) {
 
 			});
 		}
+	};
+
+	$scope.listProjects = function(){
+	    Projects.query();
+
 	};
 
 	$scope.generatedFiles = {
