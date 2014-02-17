@@ -11,6 +11,11 @@ app.controller('navbarCtrl', function ($scope, $location, Auth) {
 			'title': 'SETTINGS',
 			'link': '/settings',
 			'public': false
+		},
+		{
+			'title': 'PROJECTS',
+			'link': '/projects',
+			'public': false
 		}
 	];
 

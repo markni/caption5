@@ -1,4 +1,4 @@
-app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, Project, Projects, Auth) {
+app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $routeParams, Project, Projects, Auth) {
 
 	var v = document.getElementById('video');
 
@@ -29,9 +29,11 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, Pro
 	});
 
 
-	$scope.project_id = null;
+	$scope.project_id = $routeParams.projectId || null;
 
 	$scope.project_list = [];
+
+	$scope.dirty = false;
 
 	$scope.project = {
 		title: 'Default Project Name',
@@ -52,16 +54,27 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, Pro
 				$scope.project_id = null;
 			});
 		}
-	}
+	};
 
 	$scope.loadProject = function(){
 
-	}
+		if ($scope.project_id){
+
+			Project.get({ id:$scope.project_id },function(project){
+				$scope.project.title = project.title;
+				$scope.project.cues = project.cues;
+				$scope.project.start = true;
+			});
+
+		}
+
+	};
 
 	$scope.saveProject = function() {
 		//update project
 		if ($scope.project_id){
 			Project.update({ id:$scope.project_id }, $scope.project);
+			$scope.dirty = false;
 		}
 		//new project
 		else{
@@ -70,6 +83,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, Pro
 				console.log('clicked');
 				$scope.project_id = u._id;
 				$location.path('/p/'+ u._id);
+				$scope.dirty = false;
 
 			});
 		}
@@ -117,6 +131,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, Pro
 
 	//toggle play/pause when video is clicked
 	$scope.togglePause = function (event) {
+		console.log('???');
 		event.preventDefault(); //firefox already has this behaviour
 		v.paused ? v.play() : v.pause();
 
@@ -482,7 +497,9 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, Pro
 
 
 	if (Auth.isLoggedIn()){
+		$scope.loadProject();
 		$scope.listProjects();
 	}
+
 
 });
