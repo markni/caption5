@@ -1,4 +1,4 @@
-app.controller('homeCtrl', function ($scope, $http, $sce, Project, Projects) {
+app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, Project, Projects, Auth) {
 
 	var v = document.getElementById('video');
 
@@ -15,14 +15,28 @@ app.controller('homeCtrl', function ($scope, $http, $sce, Project, Projects) {
 //		}
 //	});
 
+
+	//ugly hack that prevents route change
+	var lastRoute = $route.current;
+	$scope.$on('$locationChangeSuccess', function(event) {
+		if ($route.current.params.projectId && $route.current.params.projectId == $scope.project_id){
+			$route.current = lastRoute;
+		}
+		else {
+			lastRoute = $route.current;
+		}
+
+	});
+
+
 	$scope.project_id = null;
+
+	$scope.project_list = [];
 
 	$scope.project = {
 		title: 'Default Project Name',
 		start: false,
-		name: 'subtitlename',
 		cues: [
-
 			{text: 'Thanks for using Caption5!', begin: 1000, end: 3999},
 			{text: 'Looks like your video is working', begin: 4000, end: 7999},
 			{text: 'Now go ahead and click the Start Project button on the top', begin: 8000, end: 11999},
@@ -40,21 +54,33 @@ app.controller('homeCtrl', function ($scope, $http, $sce, Project, Projects) {
 		}
 	}
 
+	$scope.loadProject = function(){
+
+	}
+
 	$scope.saveProject = function() {
+		//update project
 		if ($scope.project_id){
 			Project.update({ id:$scope.project_id }, $scope.project);
 		}
+		//new project
 		else{
 			Project.save($scope.project,function(u,h){
 
+				console.log('clicked');
 				$scope.project_id = u._id;
+				$location.path('/p/'+ u._id);
 
 			});
 		}
 	};
 
 	$scope.listProjects = function(){
-	    Projects.query();
+	    Projects.query(function(projects){
+
+			$scope.project_list = projects;
+
+		});
 
 	};
 
@@ -453,9 +479,10 @@ app.controller('homeCtrl', function ($scope, $http, $sce, Project, Projects) {
 	$scope.reloadTrack($scope.project.cues);
 
 	v.volume = 0.2; //prevent too loud video
-	//$scope.awesomeThings = $http.resource('/api/awesomeThings');
-	$http.get('/api/awesomeThings').success(function (awesomeThings) {
-		$scope.awesomeThings = awesomeThings;
-	});
+
+
+	if (Auth.isLoggedIn()){
+		$scope.listProjects();
+	}
 
 });

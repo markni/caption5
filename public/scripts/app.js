@@ -11,6 +11,10 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
 			templateUrl: '/views/home.html',
 			controller: 'homeCtrl'
 		})
+		.when('/p/:projectId', {
+			templateUrl: '/views/home.html',
+			controller: 'homeCtrl'
+		})
 		.when('/login', {
 			templateUrl: '/views/login.html',
 			controller: 'loginCtrl'
