@@ -8,12 +8,15 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 //	window.onbeforeunload = function(){
 //		return leavingPageText;
 //	}
-//
-//	$scope.$on('$locationChangeStart', function(event, next, current) {
-//		if(!confirm(leavingPageText + "\n\nAre you sure you want to leave this page?")) {
-//			event.preventDefault();
+
+	$scope.$on('$locationChangeStart', function(event, next, current) {
+//		if ($scope.dirty){
+//			if(!confirm(leavingPageText + "\n\nAre you sure you want to leave this page?")) {
+//				event.preventDefault();
+//			}
 //		}
-//	});
+
+	});
 
 
 	//ugly hack that prevents route change
@@ -33,7 +36,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 
 	$scope.project_list = [];
 
-	$scope.dirty = false;
+
 
 	$scope.project = {
 		title: 'Default Project Name',
@@ -145,6 +148,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 
 	//live preview created track
 	$scope.reloadTrack = function (array) {
+		$scope.dirty = true;
 		var track;
 
 		try {
@@ -499,6 +503,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 
 	$scope.reloadTrack($scope.project.cues);
 
+	$scope.dirty = false;
 
 	$scope.$watch('videoUrl', function() {
 		if (typeof $scope.videoUrl != 'undefined'){
