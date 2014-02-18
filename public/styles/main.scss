@@ -52,6 +52,10 @@ body {
 
   &.normalize {
 	@include transform(none);
+
+  }
+
+  &.loaded {
 	border: 0;
 	border-radius: 0;
   }

@@ -21,7 +21,7 @@
 <div drop-zone ng-class='{"col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start}' class="video-drop-zone col-lg-6 col-lg-offset-3 col-xs-12 ">
 
 
-	<video class="video-player" ng-class='{normalize:!!project.start}' ng-click='togglePause($event)'  id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
+	<video class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl}' ng-click='togglePause($event)'  id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
 
 	</video>
 

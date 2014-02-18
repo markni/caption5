@@ -5,7 +5,7 @@
 		A simple caption maker in your browser
 	</p>
 
-	<p><a class="btn btn-lg btn-info" ng-hide='videoUrl' ng-click="openVideo()">Start by picking a video from
+	<p><a class="btn btn-lg btn-blue" ng-hide='videoUrl' ng-click="openVideo()">Start by picking a video from
 		your computer</a></p>
 
 	<p><a class="btn btn-lg btn-danger" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
@@ -20,7 +20,10 @@
 
 <div drop-zone ng-class='{"col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start}' class="video-drop-zone col-lg-6 col-lg-offset-3 col-xs-12 ">
 
-	<video class="video-player" ng-class='{normalize:!!project.start}' ng-click='togglePause($event)'  id="video" ng-src="{{videoUrl}}" controls autoplay="autoplay" style="width:100%" poster="/images/test.jpg"></video>
+
+	<video class="video-player" ng-class='{normalize:!!project.start}' ng-click='togglePause($event)'  id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
+
+	</video>
 
 
 	<div class="form-group sub-editor" ng-class='{show:!!project.start}'>
@@ -56,7 +59,7 @@
 
 		<a alt='load auto save' title='load auto save' class="pull-right pointer btn-xs" ng-click='loadFromLocal()'><i class="fa fa-cloud-download"></i></a>
 		<a alt='download' title='download' class="pull-right pointer btn-xs" ng-click='download("srt")'><i class="fa fa-download"></i></a>
-		<a alt='r' title='r' class="pull-right pointer btn-xs" ng-click='listProjects()'><i class="fa fa-trash-o"></i></a>
+
 </div>
 
 </div>
