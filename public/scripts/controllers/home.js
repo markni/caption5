@@ -64,6 +64,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 				$scope.project.title = project.title;
 				$scope.project.cues = project.cues;
 				$scope.project.start = true;
+
 			});
 
 		}
@@ -131,9 +132,14 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 
 	//toggle play/pause when video is clicked
 	$scope.togglePause = function (event) {
-		console.log('???');
-		event.preventDefault(); //firefox already has this behaviour
-		v.paused ? v.play() : v.pause();
+
+
+
+		if ($scope.project.start){
+			event.preventDefault(); //firefox already has this behaviour
+			v.paused ? v.play() : v.pause();
+		}
+
 
 	};
 
@@ -492,6 +498,14 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 	//run block
 
 	$scope.reloadTrack($scope.project.cues);
+
+
+	$scope.$watch('videoUrl', function() {
+		if (typeof $scope.videoUrl != 'undefined'){
+			v.setAttribute("controls","controls");
+		}
+
+	});
 
 	v.volume = 0.2; //prevent too loud video
 
