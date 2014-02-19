@@ -63,7 +63,12 @@ $max-level-two-num: 5;
 	&:hover {
 	  >li {
 		opacity: 1;
+	  	&:last-of-type {
+		  opacity: 0;
+		  display: none;
+		}
 	  }
+
 	}
 
 	> li {
@@ -83,6 +88,11 @@ $max-level-two-num: 5;
 	  width: #{$c-height}px;
 	  border-radius: 50%;
 	  text-align: center;
+
+	  &:last-of-type {
+		opacity: 0.5;
+		bottom: #{ ($first-level-num  - 3 - 1 ) * ($c-height + $c-margin-bottom)}px;
+	  }
 
 	  > i {
 		display: block;

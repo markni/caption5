@@ -154,8 +154,6 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 		try {
 
 
-
-
 //		console.log(typeof v.addTextTrack);
 			if (typeof v.addTextTrack != 'undefined') {
 
@@ -192,7 +190,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 
 					var end = (array[i].end) ? (array[i].end / 1000) : next;
 
-					var text = array[i].text;
+					var text = array[i].text.replace(/<br(|\/| \/)>/g,'\n'); //replace <br/> <br> <br /> with new line in vtt
 
 					if (begin && end && text) {
 						track.addCue(createCue(begin, end, text));

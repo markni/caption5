@@ -89,6 +89,7 @@
 
 <nav class="sao" rule="navigation" ng-class='{show:!!project.start}'>
 	<ol>
+
 		<li><i class="fa  fa-share"></i>
 			<ol>
 				<li><i class="fa fa-facebook"></i> Twitter</li>
@@ -100,6 +101,9 @@
 			<ol>
 				<li ng-click='loadFromLocal()'><i class="fa fa-undo"></i> Reload Auto Save</li>
 
+
+				<li><i class="fa fa-times"></i> Delete Project</li>
+
 				<li><i class="fa fa-download"></i> Download Captions
 					<ol>
 						<li ng-click='download("vtt")'><i class="fa fa-file-o"></i> .vtt</li>
@@ -108,7 +112,6 @@
 					</ol>
 				</li>
 
-				<li><i class="fa fa-times"></i> Delete Project</li>
 
 			</ol>
 		</li>
@@ -126,6 +129,8 @@
 			</ol>
 		</li>
 		<li><i class="fa fa-save" ng-click='saveProject()'></i></li>
+
+		<li><i class="fa  fa-bell-o"></i></li>
 	</ol>
 
 </nav>
