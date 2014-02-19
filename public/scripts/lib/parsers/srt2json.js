@@ -69,6 +69,7 @@
 			sub = {};
 			text = [];
 
+			i = nextNonEmptyLine( lines, i );
 			sub.id = parseInt( lines[i++], 10 );
 
 			// Split on '-->' delimiter, trimming spaces as well
@@ -135,6 +136,14 @@
 
 	function toMilliSeconds(t_in){
 		return parseInt(toSeconds( t_in )*1000);
+	}
+
+	function nextNonEmptyLine( linesArray, position ) {
+		var idx = position;
+		while ( !linesArray[idx] ) {
+			idx++;
+		}
+		return idx;
 	}
 
 	function lastNonEmptyLine( linesArray ) {

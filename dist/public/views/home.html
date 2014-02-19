@@ -17,21 +17,32 @@
 </div>
 
 
+<div drop-zone ng-class='{"col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start}'
+	 class="video-drop-zone col-lg-6 col-lg-offset-3 col-xs-12 ">
 
-<div drop-zone ng-class='{"col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start}' class="video-drop-zone col-lg-6 col-lg-offset-3 col-xs-12 ">
 
-
-	<video class="video-player" ng-class='{normalize:!!project.start}' ng-click='togglePause($event)'  id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
+	<video class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl}' ng-click='togglePause($event)'
+		   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
 
 	</video>
 
 
 	<div class="form-group sub-editor" ng-class='{show:!!project.start}'>
 		<form ng-submit='createCue()'>
-			<input placeholder="Type in captions here and press enter" type="text" ng-keydown='onEdit($event)' class="form-control" ng-model='newCue.text'>
+			<input placeholder="Type in captions here and press enter" type="text" ng-keydown='onEdit($event)'
+				   class="form-control" ng-model='newCue.text'>
 		</form>
-		<div class="pull-left" ng-show='editMode'><i ng-click="modifyTime('begin',-200)" class="fa fa-step-backward new-cue-time-icon" title="-200ms"></i><span class="new-cue-time" title="seek to this time" ng-click='navigatedTo(newCue.begin,false)'>{{convert(newCue.begin)}}</span><i ng-click="modifyTime('begin',200)" class="fa fa-step-forward  new-cue-time-icon" title="+200ms"></i></div>
-		<div class="pull-right" ng-show='editMode'><i ng-click="modifyTime('end',-200)" class="fa fa-step-backward  new-cue-time-icon" title="-200ms"></i><span class="new-cue-time" title="seek to this time" ng-click='navigatedTo(newCue.end,false)'>{{convert(newCue.end)}}</span><i  ng-click="modifyTime('end',200)" class="fa fa-step-forward  new-cue-time-icon" title="+200ms"></i></div>
+		<div class="pull-left" ng-show='editMode'><i ng-click="modifyTime('begin',-200)"
+													 class="fa fa-step-backward new-cue-time-icon"
+													 title="-200ms"></i><span class="new-cue-time"
+																			  title="seek to this time"
+																			  ng-click='navigatedTo(newCue.begin,false)'>{{convert(newCue.begin)}}</span><i
+				ng-click="modifyTime('begin',200)" class="fa fa-step-forward  new-cue-time-icon" title="+200ms"></i>
+		</div>
+		<div class="pull-right" ng-show='editMode'><i ng-click="modifyTime('end',-200)"
+													  class="fa fa-step-backward  new-cue-time-icon" title="-200ms"></i><span
+				class="new-cue-time" title="seek to this time" ng-click='navigatedTo(newCue.end,false)'>{{convert(newCue.end)}}</span><i
+				ng-click="modifyTime('end',200)" class="fa fa-step-forward  new-cue-time-icon" title="+200ms"></i></div>
 	</div>
 
 </div>
@@ -39,33 +50,31 @@
 <div class="right-col col-lg-3 col-md-4 col-sm-5 col-xs-12  " ng-class='{show:!!project.start}'>
 
 
-
-	<ul class="nav nav-pills nav-stacked cue-list pull-right" >
-
-
-	<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index"  class="pointer">
-		<i class="fa fa-times-circle cue-delete" ng-click='removeCue(cue)'></i>
-		<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)' >{{convert(cue.begin)}}</span>
-		<span class="cue-grid cue-text" ng-click='editCue(cue)'>{{cue.text}}</span>
-	</li>
+	<ul class="nav nav-pills nav-stacked cue-list pull-right">
 
 
+		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer">
+			<i class="fa fa-times-circle cue-delete" ng-click='removeCue(cue)'></i>
+			<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)'>{{convert(cue.begin)}}</span>
+			<span class="cue-grid cue-text" ng-click='editCue(cue)'>{{cue.text}}</span>
+		</li>
 
 
-</ul>
+	</ul>
 	<div class=" tools">
-		<a alt='save project' title='save project' class="pull-right pointer btn-xs" ng-click='saveProject()'><i class="fa fa-save"></i></a>
-		<a alt='load' title='load' class="pull-right pointer btn-xs" ng-click='openSub()'><i class="fa fa-folder-open"></i></a>
+		<a alt='save project' title='save project' class="pull-right pointer btn-xs" ng-click='saveProject()'><i
+				class="fa fa-save"></i></a>
+		<a alt='load' title='load' class="pull-right pointer btn-xs" ng-click='openSub()'><i
+				class="fa fa-folder-open"></i></a>
 
-		<a alt='load auto save' title='load auto save' class="pull-right pointer btn-xs" ng-click='loadFromLocal()'><i class="fa fa-cloud-download"></i></a>
-		<a alt='download' title='download' class="pull-right pointer btn-xs" ng-click='download("srt")'><i class="fa fa-download"></i></a>
+		<a alt='load auto save' title='load auto save' class="pull-right pointer btn-xs" ng-click='loadFromLocal()'><i
+				class="fa fa-cloud-download"></i></a>
+		<a alt='download' title='download' class="pull-right pointer btn-xs" ng-click='download("srt")'><i
+				class="fa fa-download"></i></a>
+
+	</div>
 
 </div>
-
-</div>
-
-
-
 
 
 <input type="file" id="video-selector" class="hidden" video-selector accept=".mp4,video/*">
@@ -76,3 +85,47 @@
 	<!--<textarea id="debug" rows='10'></textarea>-->
 
 </div>
+
+
+<nav class="sao" rule="navigation" ng-class='{show:!!project.start}'>
+	<ol>
+		<li><i class="fa  fa-share"></i>
+			<ol>
+				<li><i class="fa fa-facebook"></i> Twitter</li>
+				<li><i class="fa fa-twitter"></i> Facebook</li>
+				<li><i class="fa fa-google-plus"></i> Google+</li>
+			</ol>
+		</li>
+		<li><i class="fa fa-angle-double-right"></i>
+			<ol>
+				<li ng-click='loadFromLocal()'><i class="fa fa-undo"></i> Reload Auto Save</li>
+
+				<li><i class="fa fa-download"></i> Download Captions
+					<ol>
+						<li ng-click='download("vtt")'><i class="fa fa-file-o"></i> .vtt</li>
+						<li ng-click='download("srt")'><i class="fa fa-file-o"></i> .srt</li>
+						<li><i class="fa fa-file-o"></i> .ssa</li>
+					</ol>
+				</li>
+
+				<li><i class="fa fa-times"></i> Delete Project</li>
+
+			</ol>
+		</li>
+
+
+
+		<li><i class="fa fa-folder-open-o"></i>
+
+			<ol>
+				<li ng-click='openSub()'><i class="fa fa-file-text-o"></i> Load Caption Files (.ssa, .srt, .vtt)</li>
+
+
+				<li ng-click="openVideo()"><i class="fa fa-caret-square-o-right"></i> Load Video Files (.mp4)</li>
+
+			</ol>
+		</li>
+		<li><i class="fa fa-save" ng-click='saveProject()'></i></li>
+	</ol>
+
+</nav>

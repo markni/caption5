@@ -336,25 +336,36 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 	};
 
 	function readSub(f) {
+		var ext = f.name.split('.').pop();
 
 		var reader = new FileReader();
 
 		reader.onload = function (e) {
 //			console.log('onload');
 
+
 			var sub = reader.result;
 //			console.log(sub);
 			if (sub) {
-				try {
-					var data = Popcorn.parseSSA(sub).data;
+				if (ext === 'srt'){
+					var data = Popcorn.parseSRT(sub).data;
 					$scope.project.cues = data;
 					$scope.$apply();
 
-//					console.log('done');
-				} catch (e) {
-					console.log(e);
-
 				}
+				else if (ext === 'ass' || ext === 'ssa'){
+					try {
+						var data = Popcorn.parseSSA(sub).data;
+						$scope.project.cues = data;
+						$scope.$apply();
+
+//					console.log('done');
+					} catch (e) {
+						console.log(e);
+
+					}
+				}
+
 
 				$scope.reloadTrack($scope.project.cues);
 			}
@@ -371,7 +382,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 
 		var ext = f.name.split('.').pop();
 
-		if (ext === 'srt') {
+		if (ext === 'srt' || ext === 'ssa') {
 
 			readSub(f);
 
