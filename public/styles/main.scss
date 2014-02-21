@@ -28,27 +28,42 @@ body {
 
 
 .file-picker{
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20%;
+  z-index: 999;
   background-color: transparent;
+  height: 200px;
 
   @include transform(translateZ(0));
 
   padding: 10px;
 
-  @include transition(all 500ms ease-in);
+  @include transition(all 2000ms);
 
   &.dismiss{
-	margin-top: -250px;
 	opacity: 0;
+	pointer-events:none;
+	z-index: -999;
   }
 
+  .pick-video-btn{
+	margin-top: 100px;
+  }
+}
+
+drop-zone {
+  @include transform(translateZ(0));
 }
 
 .video-player{
   @include transform(translateZ(0));
   @include transition(all 500ms);
   //@include transform(perspective(500px) rotateX(15deg));
-  border: 3px dashed;
-  border-radius: 13px;
+  border: 2px dashed $gray-dark;
+  border-radius: 5px;
 
   &.normalize {
 	@include transform(none);
@@ -101,7 +116,7 @@ body {
 .sub-editor{
   opacity: 0;
   @include transform(translateZ(0));
-  @include transition(opacity 2500ms);
+  @include transition(opacity 5000ms);
   &.show {
 	opacity: 1;
   }
@@ -133,12 +148,13 @@ body {
 .right-col{
 
   opacity: 0;
-
+  @include transform(translateZ(0));
+  @include transition(opacity 5000ms);
 
   .tools {
 	clear:both;
 	@include transform(translateZ(0));
-	@include transition(opcaity 500ms);
+	@include transition(opacity 5000ms);
 	opacity: 0.1;
 
 

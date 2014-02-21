@@ -38,6 +38,26 @@ $max-level-two-num: 5;
 //top level menu
 
 .sao {
+  .system-message{
+	background-color: white;
+	padding: 20px;
+	position: absolute;
+	bottom: 80px;
+	left: 15px;
+
+	&:after{
+	  content: ' ';
+	  width: 0;
+	  height: 0;
+	  border-left: 10px solid transparent;
+	  border-right: 10px solid transparent;
+	  border-top: 20px solid white;
+	  position: absolute;
+	  bottom: -14px;
+	  left: 7px;
+	}
+  }
+
   position: absolute;
   z-index: 99999;
   bottom: 0;
@@ -69,13 +89,18 @@ $max-level-two-num: 5;
 		}
 	  }
 
+	  .system-message{
+		opacity: 0;
+		display: none;
+	  }
+
 	}
 
 	> li {
 	  cursor: pointer;
 	  position: absolute;
 	  bottom: #{ $first-level-num * ($c-height + $c-margin-bottom) + 500 }px;
-	  left: 20px;
+	  left: 12px;
 
 	  -webkit-transform: translate3D(0, 0, 0);
 	  opacity: 0;

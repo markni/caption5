@@ -1,25 +1,25 @@
-<div class="jumbotron text-center file-picker" ng-class='{dismiss:!!project.start}'>
-	<h1>Caption5</h1>
 
-	<p class="lead">
-		A simple caption maker in your browser
-	</p>
-
-	<p><a class="btn btn-lg btn-blue" ng-hide='videoUrl' ng-click="openVideo()">Start by picking a video from
-		your computer</a></p>
-
-	<p><a class="btn btn-lg btn-danger" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
-
-	<p class="hint" ng-show='videoUrl'>Not the the video you looking for? <a class="pointer" ng-click="openVideo()">Click
-		here to pick another</a></p>
-
-
-</div>
 
 
 <div drop-zone ng-class='{"col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start}'
 	 class="video-drop-zone col-lg-6 col-lg-offset-3 col-xs-12 ">
+	<div class="jumbotron text-center file-picker" ng-class='{dismiss:!!project.start}'>
+		<!--<h1>Caption5</h1>-->
 
+		<!--<p class="lead">-->
+		<!--A simple caption maker in your browser-->
+		<!--</p>-->
+
+		<p><a class="btn btn-lg btn-blue pick-video-btn" ng-hide='videoUrl' ng-click="openVideo()">Start by picking a video from
+			your computer</a></p>
+
+		<p><a class="btn btn-lg btn-danger" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
+
+		<p class="hint" ng-show='videoUrl'>Not the the video you looking for? <a class="pointer" ng-click="openVideo()">Click
+			here to pick another</a></p>
+
+
+	</div>
 
 	<video class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl}' ng-click='togglePause($event)'
 		   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
@@ -81,6 +81,7 @@
 <input type="file" id="sub-selector" class="hidden" sub-selector accept=".srt,.ssa,.ass">
 
 <div>
+
 	<!--debug:-->
 	<!--<textarea id="debug" rows='10'></textarea>-->
 
@@ -131,6 +132,7 @@
 		<li><i class="fa fa-save" ng-click='saveProject()'></i></li>
 
 		<li><i class="fa  fa-bell-o"></i></li>
+		<div class="system-message" ng-bind-html="symstemMsg"></div>
 	</ol>
 
 </nav>

@@ -2,6 +2,9 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 
 	var v = document.getElementById('video');
 
+
+	$scope.symstem_msg =  'I am an <code>HTML</code>string with <a href="#">links!</a> and other <em>stuff</em>';
+
 	var avgDelay = 1500; // 500ms delay
 
 //	var leavingPageText = "You'll lose your changes if you leave";
@@ -318,7 +321,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 		var fileURL = URL.createObjectURL(f);
 		$scope.videoUrl = $sce.trustAsResourceUrl(fileURL);
 		if (f.name) {
-			$scope.project.name = f.name;
+			$scope.project.title = f.name;
 		}
 		$scope.$apply();
 	};
@@ -507,6 +510,16 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 
 		return output;
 	}
+
+
+	$scope.showMsg = function(msg){
+		$scope.symstem_msg = msg;
+		setTimeout(function(){
+			$scope.symstem_msg = null;
+		},3000)
+	}
+
+
 
 	//run block
 
