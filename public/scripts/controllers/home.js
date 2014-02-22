@@ -1,9 +1,10 @@
-app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $routeParams, Project, Projects, Auth) {
+app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth) {
 
 	var v = document.getElementById('video');
 
 
-	$scope.symstem_msg =  'I am an <code>HTML</code>string with <a href="#">links!</a> and other <em>stuff</em>';
+	$scope.system_msg = null;
+	$scope.hasMsg = false;
 
 	var avgDelay = 1500; // 500ms delay
 
@@ -322,6 +323,7 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 		$scope.videoUrl = $sce.trustAsResourceUrl(fileURL);
 		if (f.name) {
 			$scope.project.title = f.name;
+			$scope.showMsg('Loaded <em>'+ f.name +'</em>' + ' from local drive.');
 		}
 		$scope.$apply();
 	};
@@ -390,6 +392,8 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 		}
 		else {
 			var fileURL = URL.createObjectURL(f);
+			$scope.showMsg('Loaded <em>'+ f.name +'</em>' + ' from local drive.');
+
 
 			$scope.videoUrl = $sce.trustAsResourceUrl(fileURL);
 			$scope.$apply();
@@ -450,9 +454,12 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 				$scope.project.cues = JSON.parse(localStorage.lastSave);
 
 				$scope.reloadTrack($scope.project.cues);
+				$scope.showMsg('Restored form last auto save.');
 			}
 
 		}
+
+
 
 	};
 
@@ -513,10 +520,17 @@ app.controller('homeCtrl', function ($scope, $route, $http, $sce, $location, $ro
 
 
 	$scope.showMsg = function(msg){
-		$scope.symstem_msg = msg;
-		setTimeout(function(){
-			$scope.symstem_msg = null;
-		},3000)
+		$scope.system_msg = msg;
+		$scope.hasMsg = true;
+
+		$timeout(function(){
+			$scope.hasMsg = false;
+		},3000);                     //this flag is used to control show/hide css animation
+									//it runs 1000ms before the text being cleared out by angular
+
+		$timeout(function(){
+			$scope.system_msg = null;
+		},4000);
 	}
 
 

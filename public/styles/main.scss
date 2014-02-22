@@ -58,11 +58,27 @@ drop-zone {
   @include transform(translateZ(0));
 }
 
+
+.main-caption-input{
+  @include transform(translateZ(0));
+  @include transition(all 500ms);
+  background-color: transparent;
+  box-shadow: none;
+  border: 0;
+  border-bottom: 1px solid $gray-light;
+  padding: 0;
+  &:focus{
+	box-shadow: none;
+	border-color:$gray-dark;
+  }
+
+}
+
 .video-player{
   @include transform(translateZ(0));
   @include transition(all 500ms);
   //@include transform(perspective(500px) rotateX(15deg));
-  border: 2px dashed $gray-dark;
+  border: 1px dashed $gray-dark;
   border-radius: 5px;
 
   &.normalize {
@@ -116,7 +132,7 @@ drop-zone {
 .sub-editor{
   opacity: 0;
   @include transform(translateZ(0));
-  @include transition(opacity 5000ms);
+  @include transition(opacity 3000ms);
   &.show {
 	opacity: 1;
   }
@@ -149,12 +165,12 @@ drop-zone {
 
   opacity: 0;
   @include transform(translateZ(0));
-  @include transition(opacity 5000ms);
+  @include transition(opacity 2000ms);
 
   .tools {
 	clear:both;
 	@include transform(translateZ(0));
-	@include transition(opacity 5000ms);
+	@include transition(opacity 2000ms);
 	opacity: 0.1;
 
 
@@ -171,8 +187,12 @@ drop-zone {
   }
 
   &:hover{
+
 	.tools {
 	  opacity: 0.5;
+	}
+	&.show{
+	  opacity: 1;
 	}
   }
 

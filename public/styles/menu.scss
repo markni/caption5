@@ -1,6 +1,13 @@
 @import "compass";
 @import "mixins";
 
+$gray-dark: #303030;
+$gray-light: #bcbcbc;
+$gray-midium: #55595b;
+$amber-light: #edece4;
+$white:white;
+$blue-midium:#6EC8F8;
+
 
 $primary-color: #6EC8F8;
 //orange
@@ -38,12 +45,36 @@ $max-level-two-num: 5;
 //top level menu
 
 .sao {
+  .jingle-bell{
+	@include transform(translateZ(0));
+	@include transition(all 1000ms);
+	&.show{
+	  color:white;
+	  background-color: $primary-color;
+	  opacity: 1;
+	}
+
+  }
   .system-message{
 	background-color: white;
 	padding: 20px;
 	position: absolute;
-	bottom: 80px;
+	bottom: 90px;
 	left: 15px;
+	opacity: 0;
+	@include transform(translateZ(0));
+	@include transition(all 1000ms);
+
+	em {
+	  color:$primary-color;
+	  font-style:normal;
+
+	}
+
+	&.show{
+	  bottom: 80px;
+	  opacity: 1;
+	}
 
 	&:after{
 	  content: ' ';

@@ -30,7 +30,7 @@
 	<div class="form-group sub-editor" ng-class='{show:!!project.start}'>
 		<form ng-submit='createCue()'>
 			<input placeholder="Type in captions here and press enter" type="text" ng-keydown='onEdit($event)'
-				   class="form-control" ng-model='newCue.text'>
+				   class="form-control main-caption-input" ng-model='newCue.text'>
 		</form>
 		<div class="pull-left" ng-show='editMode'><i ng-click="modifyTime('begin',-200)"
 													 class="fa fa-step-backward new-cue-time-icon"
@@ -131,8 +131,8 @@
 		</li>
 		<li><i class="fa fa-save" ng-click='saveProject()'></i></li>
 
-		<li><i class="fa  fa-bell-o"></i></li>
-		<div class="system-message" ng-bind-html="symstemMsg"></div>
+		<li><i class="fa  fa-bell-o jingle-bell" ng-class="{show:!!hasMsg}"></i></li>
+		<div class="system-message" ng-bind-html="system_msg" ng-class="{show:!!hasMsg}"></div>
 	</ol>
 
 </nav>
