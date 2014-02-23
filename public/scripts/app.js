@@ -1,5 +1,5 @@
 var app = angular.module('ameApp', ['ngRoute',
-	'ngTouch', 'ngCookies','ngResource','ngSanitize','chieffancypants.loadingBar', 'ngAnimate']);
+	'ngTouch', 'ngCookies','ngResource','ngSanitize','ngAnimate','chieffancypants.loadingBar']);
 
 app.config(function ($routeProvider, $locationProvider, $httpProvider) {
 	$locationProvider.html5Mode(true);    //no hash tag in URL

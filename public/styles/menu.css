@@ -1,0 +1,594 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\0000347}}
+.sao {
+  position: absolute;
+  z-index: 99999;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\0000348}}
+.sao .jingle-bell {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 1000ms;
+  -moz-transition: all 1000ms;
+  -o-transition: all 1000ms;
+  transition: all 1000ms;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\0000351}}
+.sao .jingle-bell.show {
+  color: white;
+  background-color: #6ec8f8;
+  opacity: 1;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\0000358}}
+.sao .system-message {
+  background-color: white;
+  padding: 20px;
+  position: absolute;
+  bottom: 90px;
+  left: 15px;
+  opacity: 0;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 1000ms;
+  -moz-transition: all 1000ms;
+  -o-transition: all 1000ms;
+  transition: all 1000ms;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\0000368}}
+.sao .system-message em {
+  color: #6ec8f8;
+  font-style: normal;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\0000374}}
+.sao .system-message.show {
+  bottom: 80px;
+  opacity: 1;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\0000379}}
+.sao .system-message:after {
+  content: ' ';
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid white;
+  position: absolute;
+  bottom: -14px;
+  left: 7px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\0000398}}
+.sao.show {
+  opacity: 1;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003103}}
+.sao ol, .sao li, .sao nav {
+  margin: 0;
+  padding: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003108}}
+.sao > ol {
+  height: 280px;
+  width: 240px;
+  position: relative;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003115}}
+.sao > ol:hover > li {
+  opacity: 1;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003117}}
+.sao > ol:hover > li:last-of-type {
+  opacity: 0;
+  display: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003123}}
+.sao > ol:hover .system-message {
+  opacity: 0;
+  display: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003130}}
+.sao > ol > li {
+  cursor: pointer;
+  position: absolute;
+  bottom: 740px;
+  left: 12px;
+  -webkit-transform: translate3D(0, 0, 0);
+  opacity: 0;
+  border: rgba(239, 239, 241, 0.5) 1px solid;
+  margin-bottom: 20px;
+  list-style: none;
+  display: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003148}}
+.sao > ol > li:last-of-type {
+  opacity: 0.5;
+  bottom: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003153}}
+.sao > ol > li > i {
+  display: block;
+  position: relative;
+  margin: 3px auto 0 auto;
+  height: 32px;
+  width: 32px;
+  background-color: white;
+  border-radius: 50%;
+  line-height: 28px;
+  font-size: 20px;
+  color: #303030;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003168}}
+.sao > ol > li > i:before {
+  display: block;
+  padding-top: 3px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003174}}
+.sao > ol > li:hover {
+  border-color: #6ec8f8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003177}}
+.sao > ol > li:hover > i {
+  background-color: #6ec8f8;
+  color: white;
+}
+
+@-webkit-keyframes fly-in-1 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  56% {
+    opacity: 1;
+    bottom: 180px;
+  }
+}
+
+@-moz-keyframes fly-in-1 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  56% {
+    opacity: 1;
+    bottom: 180px;
+  }
+}
+
+@-o-keyframes fly-in-1 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  56% {
+    opacity: 1;
+    bottom: 180px;
+  }
+}
+
+@keyframes fly-in-1 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  56% {
+    opacity: 1;
+    bottom: 180px;
+  }
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003205}}
+.sao > ol:hover > li:nth-of-type(1) {
+  -webkit-animation: fly-in-1 1.5s ease-in-out;
+  -moz-animation: fly-in-1 1.5s ease-in-out;
+  -o-animation: fly-in-1 1.5s ease-in-out;
+  animation: fly-in-1 1.5s ease-in-out;
+  bottom: 180px;
+}
+
+@-webkit-keyframes fly-in-2 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  44% {
+    opacity: 1;
+    bottom: 120px;
+  }
+}
+
+@-moz-keyframes fly-in-2 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  44% {
+    opacity: 1;
+    bottom: 120px;
+  }
+}
+
+@-o-keyframes fly-in-2 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  44% {
+    opacity: 1;
+    bottom: 120px;
+  }
+}
+
+@keyframes fly-in-2 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  44% {
+    opacity: 1;
+    bottom: 120px;
+  }
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003205}}
+.sao > ol:hover > li:nth-of-type(2) {
+  -webkit-animation: fly-in-2 1.5s ease-in-out;
+  -moz-animation: fly-in-2 1.5s ease-in-out;
+  -o-animation: fly-in-2 1.5s ease-in-out;
+  animation: fly-in-2 1.5s ease-in-out;
+  bottom: 120px;
+}
+
+@-webkit-keyframes fly-in-3 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  32% {
+    opacity: 1;
+    bottom: 60px;
+  }
+}
+
+@-moz-keyframes fly-in-3 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  32% {
+    opacity: 1;
+    bottom: 60px;
+  }
+}
+
+@-o-keyframes fly-in-3 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  32% {
+    opacity: 1;
+    bottom: 60px;
+  }
+}
+
+@keyframes fly-in-3 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  32% {
+    opacity: 1;
+    bottom: 60px;
+  }
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003205}}
+.sao > ol:hover > li:nth-of-type(3) {
+  -webkit-animation: fly-in-3 1.5s ease-in-out;
+  -moz-animation: fly-in-3 1.5s ease-in-out;
+  -o-animation: fly-in-3 1.5s ease-in-out;
+  animation: fly-in-3 1.5s ease-in-out;
+  bottom: 60px;
+}
+
+@-webkit-keyframes fly-in-4 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  20% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+
+@-moz-keyframes fly-in-4 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  20% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+
+@-o-keyframes fly-in-4 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  20% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+
+@keyframes fly-in-4 {
+  /* line 192, menu.scss */
+  0% {
+    bottom: 1040px;
+    opacity: 0;
+  }
+
+  /* line 197, menu.scss */
+  20% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003205}}
+.sao > ol:hover > li:nth-of-type(4) {
+  -webkit-animation: fly-in-4 1.5s ease-in-out;
+  -moz-animation: fly-in-4 1.5s ease-in-out;
+  -o-animation: fly-in-4 1.5s ease-in-out;
+  animation: fly-in-4 1.5s ease-in-out;
+  bottom: 0px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003217}}
+.sao > ol li:hover > ol {
+  display: block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003223}}
+.sao > ol > li ol {
+  display: none;
+  position: absolute;
+  left: 34px;
+  bottom: -40px;
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position-x: 60px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003232}}
+.sao > ol > li ol > li {
+  position: relative;
+  list-style: none;
+  font-weight: 400;
+  width: 300px;
+  height: 34px;
+  line-height: 34px;
+  margin-bottom: 3px;
+  background-color: white;
+  margin-left: 33.3333333333px;
+  position: relative;
+  opacity: 0;
+  font-size: 13.3333333333px;
+  letter-spacing: 1.3333333333px;
+  text-align: left;
+  padding-left: 20px;
+  text-shadow: 0 0;
+  font-family: 'Lato', sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+  -webkit-transition: margin-left 100ms ease-in-out;
+  -moz-transition: margin-left 100ms ease-in-out;
+  -o-transition: margin-left 100ms ease-in-out;
+  transition: margin-left 100ms ease-in-out;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003253}}
+.sao > ol > li ol > li:hover {
+  background-color: #6ec8f8;
+  color: white;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003257}}
+.sao > ol > li ol > li:hover > i {
+  background-color: white;
+  color: #6ec8f8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003264}}
+.sao > ol > li ol > li:nth-last-of-type(2):before {
+  content: '';
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 16.6666666667px solid rgba(255, 255, 255, 0.9);
+  display: block;
+  position: absolute;
+  left: -21.6666666667px;
+  top: 11.6666666667px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003278}}
+.sao > ol > li ol > li > i {
+  display: inline-block;
+  color: white;
+  font-weight: normal;
+  border-radius: 50%;
+  height: 20.4px;
+  width: 20.4px;
+  background-color: #55595b;
+  font-size: 10px;
+  line-height: 20.4px;
+  text-align: center;
+  margin-right: 6px;
+  vertical-align: text-bottom;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003301}}
+.sao > ol > li > ol:hover {
+  background-image: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003303}}
+.sao > ol > li > ol:hover > li {
+  margin-left: 28.3333333333px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003309}}
+.sao > ol > li > ol > li:nth-last-of-type(2):hover:before {
+  border-right: 16.6666666667px solid #6ec8f8;
+  left: -15.6666666667px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003314}}
+.sao > ol > li > ol > li:nth-last-of-type(2):hover:after {
+  display: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003319}}
+.sao > ol > li > ol > li ol {
+  left: 285px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003323}}
+.sao > ol > li > ol > li ol > li {
+  opacity: 1;
+}
+
+@-webkit-keyframes fade-in {
+  /* line 335, menu.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 338, menu.scss */
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fade-in {
+  /* line 335, menu.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 338, menu.scss */
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fade-in {
+  /* line 335, menu.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 338, menu.scss */
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  /* line 335, menu.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 338, menu.scss */
+  100% {
+    opacity: 1;
+  }
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003347}}
+.sao > ol > li:hover > ol > li:nth-of-type(1) {
+  -webkit-animation: fade-in 0.1s ease-in 0ms both;
+  -moz-animation: fade-in 0.1s ease-in 0ms both;
+  -o-animation: fade-in 0.1s ease-in 0ms both;
+  animation: fade-in 0.1s ease-in 0ms both;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003347}}
+.sao > ol > li:hover > ol > li:nth-of-type(2) {
+  -webkit-animation: fade-in 0.1s ease-in 100ms both;
+  -moz-animation: fade-in 0.1s ease-in 100ms both;
+  -o-animation: fade-in 0.1s ease-in 100ms both;
+  animation: fade-in 0.1s ease-in 100ms both;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003347}}
+.sao > ol > li:hover > ol > li:nth-of-type(3) {
+  -webkit-animation: fade-in 0.1s ease-in 200ms both;
+  -moz-animation: fade-in 0.1s ease-in 200ms both;
+  -o-animation: fade-in 0.1s ease-in 200ms both;
+  animation: fade-in 0.1s ease-in 200ms both;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003347}}
+.sao > ol > li:hover > ol > li:nth-of-type(4) {
+  -webkit-animation: fade-in 0.1s ease-in 300ms both;
+  -moz-animation: fade-in 0.1s ease-in 300ms both;
+  -o-animation: fade-in 0.1s ease-in 300ms both;
+  animation: fade-in 0.1s ease-in 300ms both;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/menu\.scss}line{font-family:\00003347}}
+.sao > ol > li:hover > ol > li:nth-of-type(5) {
+  -webkit-animation: fade-in 0.1s ease-in 400ms both;
+  -moz-animation: fade-in 0.1s ease-in 400ms both;
+  -o-animation: fade-in 0.1s ease-in 400ms both;
+  animation: fade-in 0.1s ease-in 400ms both;
+}

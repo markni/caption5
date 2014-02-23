@@ -10,8 +10,10 @@
 		<!--A simple caption maker in your browser-->
 		<!--</p>-->
 
-		<p><a class="btn btn-lg btn-blue pick-video-btn" ng-hide='videoUrl' ng-click="openVideo()">Start by picking a video from
-			your computer</a></p>
+		<p class="pick-video-btn" ng-show='!videoUrl'>Start by drag & drop a video here</p>
+
+		<p class="hint" ng-show='!videoUrl'>You can also use the old fashion <a class="pointer" ng-click="openVideo()">file picker</a> or use a <a class="pointer" ng-click="openRemoteUrl=true">online video</a></p>
+
 
 		<p><a class="btn btn-lg btn-danger" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
 
@@ -26,12 +28,17 @@
 
 	</video>
 
+	<form ng-submit='loadOnlineVideo()' >
+		<input placeholder="Paste your remote video file link here and press enter" type="text" class="form-control remote-url-input" ng-class="{'hide':!!project.start,'show':!!openRemoteUrl}"  ng-model="remoteUrl" >
+	</form>
+
 
 	<div class="form-group sub-editor" ng-class='{show:!!project.start}'>
 		<form ng-submit='createCue()'>
 			<input placeholder="Type in captions here and press enter" type="text" ng-keydown='onEdit($event)'
 				   class="form-control main-caption-input" ng-model='newCue.text'>
 		</form>
+
 		<div class="pull-left" ng-show='editMode'><i ng-click="modifyTime('begin',-200)"
 													 class="fa fa-step-backward new-cue-time-icon"
 													 title="-200ms"></i><span class="new-cue-time"
@@ -91,7 +98,7 @@
 <nav class="sao" rule="navigation" ng-class='{show:!!project.start}'>
 	<ol>
 
-		<li><i class="fa  fa-share"></i>
+		<li><i class="fa fa-share-square-o"></i>
 			<ol>
 				<li><i class="fa fa-facebook"></i> Twitter</li>
 				<li><i class="fa fa-twitter"></i> Facebook</li>
@@ -102,9 +109,6 @@
 			<ol>
 				<li ng-click='loadFromLocal()'><i class="fa fa-undo"></i> Reload Auto Save</li>
 
-
-				<li><i class="fa fa-times"></i> Delete Project</li>
-
 				<li><i class="fa fa-download"></i> Download Captions
 					<ol>
 						<li ng-click='download("vtt")'><i class="fa fa-file-o"></i> .vtt</li>
@@ -112,6 +116,9 @@
 						<li><i class="fa fa-file-o"></i> .ssa</li>
 					</ol>
 				</li>
+				<li ng-click='removeProject()' ng-if='!!project_id' ><i class="fa fa-times"></i> Delete Project</li>
+
+
 
 
 			</ol>

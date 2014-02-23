@@ -5,6 +5,8 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 	$scope.system_msg = null;
 	$scope.hasMsg = false;
+	$scope.openRemoteUrl = false;
+
 
 	var avgDelay = 1500; // 500ms delay
 
@@ -45,6 +47,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	$scope.project = {
 		title: 'Default Project Name',
 		start: false,
+		remote: null,
 		cues: [
 			{text: 'Thanks for using Caption5!', begin: 1000, end: 3999},
 			{text: 'Looks like your video is working', begin: 4000, end: 7999},
@@ -71,6 +74,15 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 				$scope.project.title = project.title;
 				$scope.project.cues = project.cues;
 				$scope.project.start = true;
+				$scope.project.remote = project.remote;
+
+				if (project.remote !== null){
+					$scope.videoUrl =  $sce.trustAsResourceUrl(project.remote);
+					$timeout(function(){v.pause()},500);
+				}
+				else {
+					$scope.showMsg('Please reload <em>'+project.title+'</em> from your computer.');
+				}
 
 			});
 
@@ -116,6 +128,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	$scope.initProject = function () {
 
 		$scope.project.start = true;
+		$scope.openRemoteUrl = false;
 		v.pause();//stop video
 		//v.currentTime = 0;//reset video to the beginning
 	};
@@ -127,6 +140,8 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		videoSelector.click();
 
 	};
+
+
 
 	$scope.openSub = function () {
 
@@ -321,11 +336,25 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		//https://developer.mozilla.org/en-US/docs/Web/API/URL.createObjectURL
 		var fileURL = URL.createObjectURL(f);
 		$scope.videoUrl = $sce.trustAsResourceUrl(fileURL);
+		$scope.project.remote = null;
 		if (f.name) {
 			$scope.project.title = f.name;
 			$scope.showMsg('Loaded <em>'+ f.name +'</em>' + ' from local drive.');
 		}
 		$scope.$apply();
+	};
+
+
+
+	$scope.loadOnlineVideo = function(){
+		if ($scope.remoteUrl){
+
+			$scope.videoUrl = $sce.trustAsResourceUrl($scope.remoteUrl);
+			$scope.project.remote = $scope.remoteUrl;
+
+			$scope.showMsg('Loaded <em>'+ $scope.videoUrl +'</em>' + ' from the external url.');
+		}
+
 	};
 
 	$scope.onSubSelected = function () {
@@ -525,12 +554,12 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 		$timeout(function(){
 			$scope.hasMsg = false;
-		},3000);                     //this flag is used to control show/hide css animation
+		},4000);                     //this flag is used to control show/hide css animation
 									//it runs 1000ms before the text being cleared out by angular
 
 		$timeout(function(){
 			$scope.system_msg = null;
-		},4000);
+		},5000);
 	}
 
 

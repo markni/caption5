@@ -1,25 +1,27 @@
-<div class="jumbotron text-center file-picker" ng-class='{dismiss:!!project.start}'>
-	<h1>Caption5</h1>
 
-	<p class="lead">
-		A simple caption maker in your browser
-	</p>
-
-	<p><a class="btn btn-lg btn-blue" ng-hide='videoUrl' ng-click="openVideo()">Start by picking a video from
-		your computer</a></p>
-
-	<p><a class="btn btn-lg btn-danger" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
-
-	<p class="hint" ng-show='videoUrl'>Not the the video you looking for? <a class="pointer" ng-click="openVideo()">Click
-		here to pick another</a></p>
-
-
-</div>
 
 
 <div drop-zone ng-class='{"col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start}'
 	 class="video-drop-zone col-lg-6 col-lg-offset-3 col-xs-12 ">
+	<div class="jumbotron text-center file-picker" ng-class='{dismiss:!!project.start}'>
+		<!--<h1>Caption5</h1>-->
 
+		<!--<p class="lead">-->
+		<!--A simple caption maker in your browser-->
+		<!--</p>-->
+
+		<p class="pick-video-btn">Start by drag & drop a video here</p>
+
+		<p class="hint" >You can also use the old fashion <a class="pointer" ng-click="openVideo()">file picker</a> or use a <a class="pointer">online video</a></p>
+
+
+		<p><a class="btn btn-lg btn-danger" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
+
+		<p class="hint" ng-show='videoUrl'>Not the the video you looking for? <a class="pointer" ng-click="openVideo()">Click
+			here to pick another</a></p>
+
+
+	</div>
 
 	<video class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl}' ng-click='togglePause($event)'
 		   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
@@ -30,7 +32,7 @@
 	<div class="form-group sub-editor" ng-class='{show:!!project.start}'>
 		<form ng-submit='createCue()'>
 			<input placeholder="Type in captions here and press enter" type="text" ng-keydown='onEdit($event)'
-				   class="form-control" ng-model='newCue.text'>
+				   class="form-control main-caption-input" ng-model='newCue.text'>
 		</form>
 		<div class="pull-left" ng-show='editMode'><i ng-click="modifyTime('begin',-200)"
 													 class="fa fa-step-backward new-cue-time-icon"
@@ -81,6 +83,7 @@
 <input type="file" id="sub-selector" class="hidden" sub-selector accept=".srt,.ssa,.ass">
 
 <div>
+
 	<!--debug:-->
 	<!--<textarea id="debug" rows='10'></textarea>-->
 
@@ -90,7 +93,7 @@
 <nav class="sao" rule="navigation" ng-class='{show:!!project.start}'>
 	<ol>
 
-		<li><i class="fa  fa-share"></i>
+		<li><i class="fa fa-share-square-o"></i>
 			<ol>
 				<li><i class="fa fa-facebook"></i> Twitter</li>
 				<li><i class="fa fa-twitter"></i> Facebook</li>
@@ -101,9 +104,6 @@
 			<ol>
 				<li ng-click='loadFromLocal()'><i class="fa fa-undo"></i> Reload Auto Save</li>
 
-
-				<li><i class="fa fa-times"></i> Delete Project</li>
-
 				<li><i class="fa fa-download"></i> Download Captions
 					<ol>
 						<li ng-click='download("vtt")'><i class="fa fa-file-o"></i> .vtt</li>
@@ -111,6 +111,9 @@
 						<li><i class="fa fa-file-o"></i> .ssa</li>
 					</ol>
 				</li>
+				<li ng-click='removeProject()' ng-if='!!project_id' ><i class="fa fa-times"></i> Delete Project</li>
+
+
 
 
 			</ol>
@@ -130,7 +133,8 @@
 		</li>
 		<li><i class="fa fa-save" ng-click='saveProject()'></i></li>
 
-		<li><i class="fa  fa-bell-o"></i></li>
+		<li><i class="fa  fa-bell-o jingle-bell" ng-class="{show:!!hasMsg}"></i></li>
+		<div class="system-message" ng-bind-html="system_msg" ng-class="{show:!!hasMsg}"></div>
 	</ol>
 
 </nav>
