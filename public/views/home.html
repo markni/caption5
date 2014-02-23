@@ -23,7 +23,7 @@
 
 	</div>
 
-	<video class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl}' ng-click='togglePause($event)'
+	<video class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl,"on-drag":!!onDrag}' ng-click='togglePause($event)'
 		   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
 
 	</video>
@@ -88,6 +88,7 @@
 <input type="file" id="sub-selector" class="hidden" sub-selector accept=".srt,.ssa,.ass">
 
 <div>
+
 
 	<!--debug:-->
 	<!--<textarea id="debug" rows='10'></textarea>-->

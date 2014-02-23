@@ -95,16 +95,15 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		if ($scope.project_id){
 			Project.update({ id:$scope.project_id }, $scope.project);
 			$scope.dirty = false;
+			$scope.showMsg('Changes made to project has been saved.');
 		}
 		//new project
 		else{
 			Project.save($scope.project,function(u,h){
-
-				console.log('clicked');
 				$scope.project_id = u._id;
 				$location.path('/p/'+ u._id);
 				$scope.dirty = false;
-
+				$scope.showMsg('A new project has been saved.');
 			});
 		}
 	};
@@ -130,6 +129,9 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		$scope.project.start = true;
 		$scope.openRemoteUrl = false;
 		v.pause();//stop video
+
+		$scope.showMsg('Move your cursor here to show project menu.');
+
 		//v.currentTime = 0;//reset video to the beginning
 	};
 
@@ -338,6 +340,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		$scope.videoUrl = $sce.trustAsResourceUrl(fileURL);
 		$scope.project.remote = null;
 		if (f.name) {
+
 			$scope.project.title = f.name;
 			$scope.showMsg('Loaded <em>'+ f.name +'</em>' + ' from local drive.');
 		}
@@ -351,6 +354,17 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 			$scope.videoUrl = $sce.trustAsResourceUrl($scope.remoteUrl);
 			$scope.project.remote = $scope.remoteUrl;
+
+			var fname = '';
+			try{
+				fname = $scope.project.remote.split('/').pop();
+			}catch(e){
+				console.log(e);
+			}
+
+			if (fname){
+				$scope.project.title = fname;
+			}
 
 			$scope.showMsg('Loaded <em>'+ $scope.videoUrl +'</em>' + ' from the external url.');
 		}
@@ -421,6 +435,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		}
 		else {
 			var fileURL = URL.createObjectURL(f);
+			$scope.project.title = f.name;
 			$scope.showMsg('Loaded <em>'+ f.name +'</em>' + ' from local drive.');
 
 

@@ -96,7 +96,7 @@ drop-zone {
   @include transform(translateZ(0));
   @include transition(all 500ms);
   //@include transform(perspective(500px) rotateX(15deg));
-  border: 1px dashed $gray-dark;
+  border: 3px dashed $gray-dark;
   border-radius: 5px;
 
   &.normalize {
@@ -104,6 +104,10 @@ drop-zone {
 
   }
 
+  &.on-drag {
+	border-color: $blue-midium;
+
+  }
   &.loaded {
 	border: 0;
 	border-radius: 0;

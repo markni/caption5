@@ -10,9 +10,9 @@
 		<!--A simple caption maker in your browser-->
 		<!--</p>-->
 
-		<p class="pick-video-btn">Start by drag & drop a video here</p>
+		<p class="pick-video-btn" ng-show='!videoUrl'>Start by drag & drop a video here</p>
 
-		<p class="hint" >You can also use the old fashion <a class="pointer" ng-click="openVideo()">file picker</a> or use a <a class="pointer">online video</a></p>
+		<p class="hint" ng-show='!videoUrl'>You can also use the old fashion <a class="pointer" ng-click="openVideo()">file picker</a> or use a <a class="pointer" ng-click="openRemoteUrl=true">online video</a></p>
 
 
 		<p><a class="btn btn-lg btn-danger" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
@@ -28,12 +28,17 @@
 
 	</video>
 
+	<form ng-submit='loadOnlineVideo()' >
+		<input placeholder="Paste your remote video file link here and press enter" type="text" class="form-control remote-url-input" ng-class="{'hide':!!project.start,'show':!!openRemoteUrl}"  ng-model="remoteUrl" >
+	</form>
+
 
 	<div class="form-group sub-editor" ng-class='{show:!!project.start}'>
 		<form ng-submit='createCue()'>
 			<input placeholder="Type in captions here and press enter" type="text" ng-keydown='onEdit($event)'
 				   class="form-control main-caption-input" ng-model='newCue.text'>
 		</form>
+
 		<div class="pull-left" ng-show='editMode'><i ng-click="modifyTime('begin',-200)"
 													 class="fa fa-step-backward new-cue-time-icon"
 													 title="-200ms"></i><span class="new-cue-time"
