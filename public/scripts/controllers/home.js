@@ -7,6 +7,8 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	$scope.hasMsg = false;
 	$scope.openRemoteUrl = false;
 
+	$scope.timeouts = [];
+
 
 	var avgDelay = 1500; // 500ms delay
 
@@ -91,21 +93,27 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	};
 
 	$scope.saveProject = function() {
-		//update project
-		if ($scope.project_id){
-			Project.update({ id:$scope.project_id }, $scope.project);
-			$scope.dirty = false;
-			$scope.showMsg('Changes made to project has been saved.');
-		}
-		//new project
-		else{
-			Project.save($scope.project,function(u,h){
-				$scope.project_id = u._id;
-				$location.path('/p/'+ u._id);
+		if (Auth.isLoggedIn()) {
+			//update project
+			if ($scope.project_id){
+				Project.update({ id:$scope.project_id }, $scope.project);
 				$scope.dirty = false;
-				$scope.showMsg('A new project has been saved.');
-			});
+				$scope.showMsg('Changes made to project has been saved.');
+			}
+			//new project
+			else{
+				Project.save($scope.project,function(u,h){
+					$scope.project_id = u._id;
+					$location.path('/p/'+ u._id);
+					$scope.dirty = false;
+					$scope.showMsg('A new project has been saved.');
+				});
+			}
 		}
+		else{
+			$scope.showMsg('You have to ' + '<a href="/signup">create an account</a>' + ' in order to to save projects.')
+		}
+
 	};
 
 	$scope.listProjects = function(){
@@ -564,17 +572,27 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 
 	$scope.showMsg = function(msg){
+		//clear all timeouts
+		var i = $scope.timeouts.length;
+		while (i--) {
+				$timeout.cancel($scope.timeouts.splice(i, 1));
+
+		}
+
 		$scope.system_msg = msg;
 		$scope.hasMsg = true;
 
-		$timeout(function(){
+		var t1 = $timeout(function(){
 			$scope.hasMsg = false;
 		},4000);                     //this flag is used to control show/hide css animation
 									//it runs 1000ms before the text being cleared out by angular
 
-		$timeout(function(){
+		var t2 = $timeout(function(){
 			$scope.system_msg = null;
 		},5000);
+
+		$scope.timeouts.push(t1);
+		$scope.timeouts.push(t2);
 	}
 
 
@@ -598,6 +616,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	if (Auth.isLoggedIn()){
 		$scope.loadProject();
 		$scope.listProjects();
+		$scope.isLoggedIn = true;
 	}
 
 

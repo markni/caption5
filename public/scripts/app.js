@@ -29,6 +29,12 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
 			authenticate: true
 		})
 
+		.when('/projects', {
+			templateUrl: '/views/projects.html',
+			controller: 'projectsCtrl',
+			authenticate: true
+		})
+
 
 		.otherwise({
 			redirectTo: '/'

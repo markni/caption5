@@ -23,7 +23,7 @@
 
 	</div>
 
-	<video class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl,"on-drag":!!onDrag}' ng-click='togglePause($event)'
+	<video em-height-source class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl,"on-drag":!!onDrag}' ng-click='togglePause($event)'
 		   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
 
 	</video>
@@ -54,10 +54,10 @@
 
 </div>
 
-<div class="right-col col-lg-3 col-md-4 col-sm-5 col-xs-12  " ng-class='{show:!!project.start}'>
+<div  class="right-col col-lg-3 col-md-4 col-sm-5 col-xs-12  " ng-class='{show:!!project.start}'>
 
 
-	<ul class="nav nav-pills nav-stacked cue-list pull-right">
+	<ul em-height-target class="nav nav-pills nav-stacked cue-list pull-right">
 
 
 		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer">

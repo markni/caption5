@@ -1,7 +1,13 @@
-/**
- * Created with JetBrains WebStorm.
- * User: Mark
- * Date: 2/18/14
- * Time: 12:45 PM
- * To change this template use File | Settings | File Templates.
- */
+app.controller('projectsCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth) {
+	$scope.listProjects = function(){
+		Projects.query(function(projects){
+
+			$scope.project_list = projects;
+
+		});
+
+	};
+
+	$scope.listProjects();
+
+});
