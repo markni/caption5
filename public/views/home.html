@@ -1,8 +1,8 @@
 
 
 
-<div drop-zone ng-class='{"col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start}'
-	 class="video-drop-zone col-lg-6 col-lg-offset-3 col-xs-12 ">
+<div drop-zone ng-class='{"col-lg-8 col-lg-offset-1 col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start, "col-lg-8 col-lg-offset-2":!project.start}'
+	 class="video-drop-zone  col-xs-12 ">
 	<div class="jumbotron text-center file-picker" ng-class='{dismiss:!!project.start}'>
 		<!--<h1>Caption5</h1>-->
 
@@ -62,13 +62,17 @@
 
 		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer">
 			<i class="fa fa-times-circle cue-delete" ng-click='removeCue(cue)'></i>
-			<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)'>{{convert(cue.begin)}}</span>
+			<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)'>{{convert(cue.begin,null,true)}}</span>
 			<span class="cue-grid cue-text" ng-click='editCue(cue)'>{{cue.text}}</span>
 		</li>
 
 
 	</ul>
 	<div class=" tools">
+		<a alt='all +2s' title='all +2s' class="pull-right pointer btn-xs" ng-click='shiftTrack(2000)'><i
+				class="fa fa-angle-double-right"></i></a>
+
+
 		<a alt='save project' title='save project' class="pull-right pointer btn-xs" ng-click='saveProject()'><i
 				class="fa fa-save"></i></a>
 		<a alt='load' title='load' class="pull-right pointer btn-xs" ng-click='openSub()'><i
@@ -79,6 +83,10 @@
 		<a alt='download' title='download' class="pull-right pointer btn-xs" ng-click='download("srt")'><i
 				class="fa fa-download"></i></a>
 
+
+		<a alt='all -2s' title='all -2s' class="pull-right pointer btn-xs" ng-click='shiftTrack(-2000)'><i
+				class="fa fa-angle-double-left"></i></a>
+
 	</div>
 
 </div>
@@ -88,7 +96,7 @@
 <input type="file" id="sub-selector" class="hidden" sub-selector accept=".srt,.ssa,.ass">
 
 <div>
-
+	 {{project.cues}}
 
 	<!--debug:-->
 	<!--<textarea id="debug" rows='10'></textarea>-->

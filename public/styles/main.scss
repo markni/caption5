@@ -199,6 +199,7 @@ drop-zone {
 
 
 	a {
+	  font-size: 15px;
 	  color:$gray-light;
 	  &:hover {
 		color:$gray-dark;
@@ -277,12 +278,12 @@ drop-zone {
   }
   .cue-grid {
 	display: inline-block;
-  	padding: 0 10px;
+  	padding: 0 5px;
 	vertical-align: bottom;
 
   }
   .cue-begin {
-	width: 100px;
+	width: 80px;
 
 
   }

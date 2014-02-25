@@ -62,6 +62,7 @@ $max-level-two-num: 5;
 	bottom: 90px;
 	left: 15px;
 	opacity: 0;
+	width: 400%;
 	@include transform(translateZ(0));
 	@include transition(all 1000ms);
 
@@ -108,7 +109,7 @@ $max-level-two-num: 5;
   > ol {
 
 	height: #{($c-height * ($first-level-num + 1 ) + $c-margin-bottom * ($first-level-num))}px;
-	width: 240px;
+	width: 50px;
 	position: relative;
 
 	&:hover {

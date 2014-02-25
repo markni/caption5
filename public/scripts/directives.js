@@ -60,13 +60,21 @@ app.directive('subSelector', function () {
 /*
  * Get notified when height changes and change margin-top
  */
-app.directive('emHeightTarget', function () {
+app.directive('emHeightTarget', function ($window) {
 	return {
 		link: function (scope, elem, attrs) {
 
+
+
 			scope.$watch('__height', function (newHeight, oldHeight) {
-				console.log('newheight: ' + newHeight);
+
 				elem.attr('style', 'height: ' + (newHeight) + 'px');
+			});
+
+			// Set on resize
+			angular.element($window).bind('resize', function () {
+				//force apply&digest when window resize
+				scope.$apply();
 			});
 		}
 	}
@@ -81,7 +89,7 @@ app.directive('emHeightSource', function ($timeout) {
 		link: function (scope, elem, attrs) {
 
 			scope.$watch(function () {
-				console.log(elem[0].offsetHeight);
+
 				scope.__height = elem[0].offsetHeight;
 			});
 		}

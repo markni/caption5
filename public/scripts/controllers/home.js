@@ -278,6 +278,24 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		$scope.reloadTrack($scope.project.cues);
 	};
 
+	$scope.shiftTrack  = function(duration){
+		console.log(duration);
+		for (var i = 0; i< $scope.project.cues.length; i++){
+			if (duration === Math.abs(duration) || $scope.project.cues[i].begin >  Math.abs(duration)) {
+				console.log('?');
+				$scope.project.cues[i].begin += duration;
+				$scope.project.cues[i].end += duration;
+			}
+			else {
+				console.log('??+'+$scope.project.cues[i].begin);
+				$scope.project.cues[i].begin += $scope.project.cues[i].begin * (duration / Math.abs(duration));
+				$scope.project.cues[i].end += $scope.project.cues[i].begin* (duration / Math.abs(duration));
+			}
+
+		}
+		$scope.reloadTrack($scope.project.cues);
+	};
+
 	$scope.navigatedTo = function (milli, autoplay) {
 //		console.log(milli);
 
@@ -480,14 +498,21 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 	//helper functions
 
-	$scope.convert = function (milli, deli) {
+	$scope.convert = function (milli, deli, short) {
 		if (!deli) deli = '.';
 
 		var milliseconds = milli % 1000;
 		var seconds = Math.floor((milli / 1000) % 60);
 		var minutes = Math.floor((milli / (60 * 1000)) % 60);
 		var hours = Math.floor((milli / (60 * 60 * 1000)) % 60);
-		return zeroFill(hours, 2) + ":" + zeroFill(minutes, 2) + ":" + zeroFill(seconds, 2) + deli + zeroFill(milliseconds, 3);
+		if (short){
+			return zeroFill(hours, 2) + ":" + zeroFill(minutes, 2) + ":" + zeroFill(seconds, 2);
+
+		}
+		else {
+			return zeroFill(hours, 2) + ":" + zeroFill(minutes, 2) + ":" + zeroFill(seconds, 2) + deli + zeroFill(milliseconds, 3);
+
+		}
 	};
 
 	function zeroFill(number, width) {
