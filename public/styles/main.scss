@@ -185,6 +185,7 @@ drop-zone {
 
 .right-col{
 
+  display: none;
   opacity: 0;
   @include transform(translateZ(0));
   @include transition(opacity 2000ms);
@@ -220,6 +221,7 @@ drop-zone {
   }
 
   &.show {
+	display: block;
 	opacity: 1;
   }
 
@@ -301,6 +303,13 @@ drop-zone {
 	white-space: nowrap;
 	max-width: 200px;
 	text-overflow: ellipsis;
+  }
+}
+
+.screen-too-small{
+  h3 {
+	color:$gray-dark;
+	font-weight: 300;
   }
 }
 

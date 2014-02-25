@@ -2,7 +2,7 @@
 
 
 <div drop-zone ng-class='{"col-lg-8 col-lg-offset-1 col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start, "col-lg-8 col-lg-offset-2":!project.start}'
-	 class="video-drop-zone  col-xs-12 ">
+	 class="video-drop-zone  col-xs-12 hidden-xs">
 	<div class="jumbotron text-center file-picker" ng-class='{dismiss:!!project.start}'>
 		<!--<h1>Caption5</h1>-->
 
@@ -29,12 +29,15 @@
 	</video>
 
 	<form ng-submit='loadOnlineVideo()' >
+
 		<input placeholder="Paste your remote video file link here and press enter" type="text" class="form-control remote-url-input" ng-class="{'hide':!!project.start,'show':!!openRemoteUrl}"  ng-model="remoteUrl" >
+
 	</form>
 
 
 	<div class="form-group sub-editor" ng-class='{show:!!project.start}'>
 		<form ng-submit='createCue()'>
+
 			<input placeholder="Type in captions here and press enter" type="text" ng-keydown='onEdit($event)'
 				   class="form-control main-caption-input" ng-model='newCue.text'>
 		</form>
@@ -54,7 +57,7 @@
 
 </div>
 
-<div  class="right-col col-lg-3 col-md-4 col-sm-5 col-xs-12  " ng-class='{show:!!project.start}'>
+<div drop-zone  class="right-col col-lg-3 col-md-4 col-sm-5 col-xs-12  hidden-xs" ng-class='{show:!!project.start}'>
 
 
 	<ul em-height-target class="nav nav-pills nav-stacked cue-list pull-right">
@@ -96,7 +99,7 @@
 <input type="file" id="sub-selector" class="hidden" sub-selector accept=".srt,.ssa,.ass">
 
 <div>
-	 {{project.cues}}
+
 
 	<!--debug:-->
 	<!--<textarea id="debug" rows='10'></textarea>-->
@@ -104,7 +107,15 @@
 </div>
 
 
-<nav class="sao" rule="navigation" ng-class='{show:!!project.start}'>
+<div class="col-xs-12 screen-too-small visible-xs text-center">
+
+
+	<h3>This awesome App should be <br />enjoyed in a larger screen</h3>
+
+</div>
+
+
+<nav  class="sao" rule="navigation" ng-class='{show:!!project.start}'>
 	<ol>
 
 		<li><i class="fa fa-share-square-o"></i>
