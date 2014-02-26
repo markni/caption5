@@ -10,6 +10,16 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	$scope.timeouts = [];
 
 
+
+	//video related
+
+	$scope.isPaused = false;
+	$scope.currentTime = 0;
+	$scope.volume = 0;
+	$scope.duration = 0;
+
+
+
 	var avgDelay = 1500; // 500ms delay
 
 //	var leavingPageText = "You'll lose your changes if you leave";
@@ -168,7 +178,10 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 
 		if ($scope.project.start){
-			event.preventDefault(); //firefox already has this behaviour
+			if (event){
+				event.preventDefault(); //firefox already has this behaviour
+			}
+
 			v.paused ? v.play() : v.pause();
 		}
 
@@ -644,9 +657,43 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 
 	$scope.onPlay = function(){
+		$scope.duration = v.duration;
 		$scope.isPaused = false;
 		$scope.$apply();
 	};
+
+	$scope.onVolumeChange = function(){
+		$scope.volume = v.volume;
+		$scope.$apply();
+	};
+
+
+	$scope.setVolume = function(){
+		v.volume = $scope.volume;
+	};
+
+	$scope.setCurrentTime= function(){
+		v.currentTime = $scope.currentTime;
+
+
+	};
+
+	$scope.getVolumeIcon = function(){
+
+		if (v.volume){
+			if (v.volume > 0.8) {
+				return 'icon-volume-2';
+			}
+			else {
+				  return 'icon-volume-1';
+			}
+		}
+		return 'icon-volume-off';
+
+
+	};
+
+
 
 
 	//run block

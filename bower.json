@@ -1,16 +1,20 @@
 {
-	"name": "Ame",
-	"version": "0.0.0",
-	"appPath": "public",
-	"dependencies": {
-		"angular": "latest",
-		"angular-resource": "latest",
-		"angular-cookies": "latest",
-		"angular-touch": "latest",
-		"angular-sanitize": "latest",
-		"angular-route": "latest",
-		"angular-loading-bar": "latest",
-		"angular-animate":"latest",
-		"bootstrap-sass-no-js": "~3.0.3"
-	}
+  "name": "Ame",
+  "version": "0.0.0",
+  "appPath": "public",
+  "dependencies": {
+    "angular": "latest",
+    "angular-resource": "latest",
+    "angular-cookies": "latest",
+    "angular-touch": "latest",
+    "angular-sanitize": "latest",
+    "angular-route": "latest",
+    "angular-loading-bar": "latest",
+    "angular-animate": "latest",
+    "bootstrap-sass-no-js": "~3.0.3"
+
+  },
+  "resolutions": {
+    "angular": "1.2.13"
+  }
 }

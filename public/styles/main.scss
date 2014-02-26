@@ -112,7 +112,6 @@ drop-zone {
   &.loaded {
 	border: 0;
 	border-radius: 0;
-	background-color: black;
   }
 
 }
@@ -154,6 +153,7 @@ drop-zone {
 
 
 .sub-editor{
+  clear: both;
   opacity: 0;
   @include transform(translateZ(0));
   @include transition(opacity 3000ms);
