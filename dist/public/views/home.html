@@ -118,18 +118,18 @@
 <nav  class="sao" rule="navigation" ng-class='{show:!!project.start}'>
 	<ol>
 
-		<li><i class="fa fa-share-square-o"></i>
+		<li><i class="icon-paper-plane"></i>
 			<ol>
-				<li><i class="fa fa-facebook"></i> Twitter</li>
-				<li><i class="fa fa-twitter"></i> Facebook</li>
+				<li><i class="icon-social-facebook"></i> Twitter</li>
+				<li><i class="icon-social-twitter"></i> Facebook</li>
 				<li><i class="fa fa-google-plus"></i> Google+</li>
 			</ol>
 		</li>
-		<li><i class="fa fa-angle-double-right"></i>
+		<li><i class="icon-settings"></i>
 			<ol>
-				<li ng-click='loadFromLocal()'><i class="fa fa-undo"></i> Reload Auto Save</li>
+				<li ng-click='loadFromLocal()'><i class="icon-reload"></i> Reload Auto Save</li>
 
-				<li><i class="fa fa-download"></i> Download Captions
+				<li><i class="icon-cloud-download"></i> Download Captions
 					<ol>
 						<li ng-click='download("vtt")'><i class="fa fa-file-o"></i> .vtt</li>
 						<li ng-click='download("srt")'><i class="fa fa-file-o"></i> .srt</li>
@@ -158,7 +158,7 @@
 		</li>
 		<li><i class="fa fa-save" ng-click='saveProject()'></i></li>
 
-		<li><i class="fa  fa-bell-o jingle-bell" ng-class="{show:!!hasMsg}"></i></li>
+		<li><i class="icon-bell jingle-bell" ng-class="{show:!!hasMsg}"></i></li>
 		<div class="system-message" ng-bind-html="system_msg" ng-class="{show:!!hasMsg}"></div>
 	</ol>
 

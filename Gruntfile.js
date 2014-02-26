@@ -152,6 +152,14 @@ module.exports = function (grunt) {
 						src: [
 							'fonts/**/*'
 						]
+					},
+					{
+						expand: true,
+						cwd: '<%= ame.public %>/styles',
+						dest: '<%= ame.dist %>/<%= ame.public %>/styles',
+						src: [
+							'fonts/**/*'
+						]
 					}
 				]
 			}
