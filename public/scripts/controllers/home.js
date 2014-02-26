@@ -678,6 +678,23 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 	};
 
+	$scope.toggleMute = function(){
+		if(v.volume){
+			$scope.oldVolume = v.volume;
+			v.volume = 0;
+		}
+		else {
+
+			v.volume = $scope.oldVolume;
+			$scope.volume = $scope.oldVolume;
+
+
+		}
+
+
+
+	}
+
 	$scope.getVolumeIcon = function(){
 
 		if (v.volume){
