@@ -96,3 +96,19 @@ app.directive('emHeightSource', function ($timeout) {
 	}
 
 } );
+
+
+/*
+ * Checks every $digest for height changes
+ */
+app.directive('videoPlayer', function ($timeout) {
+
+	return function (scope, elm) {
+
+		elm.bind('timeupdate', scope.onTimeUpdate);
+		elm.bind('pause', scope.onPause);
+		elm.bind('play', scope.onPlay);
+	}
+
+
+} );

@@ -256,7 +256,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 	};
 
-	$scope.editCue = function (cue) {
+	$scope.editCue = function (cue,pause) {
 		$scope.editMode = true;
 		$scope.newCue = cue;
 
@@ -596,6 +596,17 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	}
 
 
+	$scope.isCueActive = function(cue){
+		if ($scope.currentTime * 1000>=cue.begin && $scope.currentTime * 1000 <= cue.end ){
+
+			return true;
+		}
+		else {
+
+			return false;
+		}
+	};
+
 	$scope.showMsg = function(msg){
 		//clear all timeouts
 		var i = $scope.timeouts.length;
@@ -618,8 +629,24 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 		$scope.timeouts.push(t1);
 		$scope.timeouts.push(t2);
-	}
+	};
 
+
+	$scope.onTimeUpdate = function(){
+		$scope.currentTime = v.currentTime;
+		$scope.$apply();
+	};
+
+	$scope.onPause = function(){
+		$scope.isPaused = true;
+		$scope.$apply();
+	};
+
+
+	$scope.onPlay = function(){
+		$scope.isPaused = false;
+		$scope.$apply();
+	};
 
 
 	//run block

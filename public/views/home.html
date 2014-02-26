@@ -15,7 +15,7 @@
 		<p class="hint" ng-show='!videoUrl'>You can also use the old fashion <a class="pointer" ng-click="openVideo()">file picker</a> or use a <a class="pointer" ng-click="openRemoteUrl=true">online video</a></p>
 
 
-		<p><a class="btn btn-lg btn-danger" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
+		<p><a class="btn btn-lg btn-blue" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
 
 		<p class="hint" ng-show='videoUrl'>Not the the video you looking for? <a class="pointer" ng-click="openVideo()">Click
 			here to pick another</a></p>
@@ -23,7 +23,7 @@
 
 	</div>
 
-	<video em-height-source class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl,"on-drag":!!onDrag}' ng-click='togglePause($event)'
+	<video em-height-source video-player class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl,"on-drag":!!onDrag}' ng-click='togglePause($event)'
 		   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
 
 	</video>
@@ -63,7 +63,7 @@
 	<ul em-height-target class="nav nav-pills nav-stacked cue-list pull-right">
 
 
-		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer">
+		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer" ng-class="{'active-cue':isCueActive(cue)}">
 			<i class="fa fa-times-circle cue-delete" ng-click='removeCue(cue)'></i>
 			<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)'>{{convert(cue.begin,null,true)}}</span>
 			<span class="cue-grid cue-text" ng-click='editCue(cue)'>{{cue.text}}</span>
@@ -100,7 +100,7 @@
 
 <div>
 
-
+	{{currentTime}}
 	<!--debug:-->
 	<!--<textarea id="debug" rows='10'></textarea>-->
 

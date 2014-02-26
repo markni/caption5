@@ -250,6 +250,10 @@ drop-zone {
 	i{
 	  padding-left: 5px;
 	}
+	&.active-cue {
+	  background-color: $blue-midium !important;
+	  color:white;
+	}
 	&:hover{
 	  .cue-delete{
 		opacity: 0.8;
