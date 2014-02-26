@@ -1,8 +1,8 @@
 
 
 
-<div drop-zone ng-class='{"col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start}'
-	 class="video-drop-zone col-lg-6 col-lg-offset-3 col-xs-12 ">
+<div drop-zone ng-class='{"col-lg-8 col-lg-offset-1 col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project.start, "col-lg-8 col-lg-offset-2":!project.start}'
+	 class="video-drop-zone  col-xs-12 hidden-xs">
 	<div class="jumbotron text-center file-picker" ng-class='{dismiss:!!project.start}'>
 		<!--<h1>Caption5</h1>-->
 
@@ -23,18 +23,21 @@
 
 	</div>
 
-	<video class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl,"on-drag":!!onDrag}' ng-click='togglePause($event)'
+	<video em-height-source class="video-player" ng-class='{normalize:!!project.start,loaded:!!videoUrl,"on-drag":!!onDrag}' ng-click='togglePause($event)'
 		   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%" poster="/images/test.png">
 
 	</video>
 
 	<form ng-submit='loadOnlineVideo()' >
+
 		<input placeholder="Paste your remote video file link here and press enter" type="text" class="form-control remote-url-input" ng-class="{'hide':!!project.start,'show':!!openRemoteUrl}"  ng-model="remoteUrl" >
+
 	</form>
 
 
 	<div class="form-group sub-editor" ng-class='{show:!!project.start}'>
 		<form ng-submit='createCue()'>
+
 			<input placeholder="Type in captions here and press enter" type="text" ng-keydown='onEdit($event)'
 				   class="form-control main-caption-input" ng-model='newCue.text'>
 		</form>
@@ -54,21 +57,25 @@
 
 </div>
 
-<div class="right-col col-lg-3 col-md-4 col-sm-5 col-xs-12  " ng-class='{show:!!project.start}'>
+<div drop-zone  class="right-col col-lg-3 col-md-4 col-sm-5 col-xs-12  hidden-xs" ng-class='{show:!!project.start}'>
 
 
-	<ul class="nav nav-pills nav-stacked cue-list pull-right">
+	<ul em-height-target class="nav nav-pills nav-stacked cue-list pull-right">
 
 
 		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer">
 			<i class="fa fa-times-circle cue-delete" ng-click='removeCue(cue)'></i>
-			<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)'>{{convert(cue.begin)}}</span>
+			<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)'>{{convert(cue.begin,null,true)}}</span>
 			<span class="cue-grid cue-text" ng-click='editCue(cue)'>{{cue.text}}</span>
 		</li>
 
 
 	</ul>
 	<div class=" tools">
+		<a alt='all +2s' title='all +2s' class="pull-right pointer btn-xs" ng-click='shiftTrack(2000)'><i
+				class="fa fa-angle-double-right"></i></a>
+
+
 		<a alt='save project' title='save project' class="pull-right pointer btn-xs" ng-click='saveProject()'><i
 				class="fa fa-save"></i></a>
 		<a alt='load' title='load' class="pull-right pointer btn-xs" ng-click='openSub()'><i
@@ -78,6 +85,10 @@
 				class="fa fa-cloud-download"></i></a>
 		<a alt='download' title='download' class="pull-right pointer btn-xs" ng-click='download("srt")'><i
 				class="fa fa-download"></i></a>
+
+
+		<a alt='all -2s' title='all -2s' class="pull-right pointer btn-xs" ng-click='shiftTrack(-2000)'><i
+				class="fa fa-angle-double-left"></i></a>
 
 	</div>
 
@@ -96,7 +107,15 @@
 </div>
 
 
-<nav class="sao" rule="navigation" ng-class='{show:!!project.start}'>
+<div class="col-xs-12 screen-too-small visible-xs text-center">
+
+
+	<h3>This awesome App should be <br />enjoyed in a larger screen</h3>
+
+</div>
+
+
+<nav  class="sao" rule="navigation" ng-class='{show:!!project.start}'>
 	<ol>
 
 		<li><i class="fa fa-share-square-o"></i>
