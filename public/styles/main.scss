@@ -8,10 +8,10 @@
 
 $gray-dark: #303030;
 $gray-light: #bcbcbc;
-$gray-midium: #55595b;
+$gray-medium: #55595b;
 $amber-light: #edece4;
 $white:white;
-$blue-midium:#6EC8F8;
+$blue-medium:#6EC8F8;
 
 body {
 
@@ -92,11 +92,46 @@ drop-zone {
   }
 }
 
+.video-controls{
+  color:$gray-medium;
+
+  div {
+	padding: 0;
+	float: left;
+	&:hover{
+	  span {
+		color:$blue-medium;
+	  }
+
+	}
+  }
+  input {
+	margin: 0;
+	padding: 0;
+  }
+  .video-control-play,.video-control-mute {
+	width:20px;
+	margin: 0px 10px;
+	cursor: pointer;
+
+  }
+  .video-control-play{
+	margin-left: 0px;
+
+
+  }
+  .video-control-time{
+	width: 160px;
+
+  }
+
+}
+
 .video-player{
   @include transform(translateZ(0));
   @include transition(all 500ms);
   //@include transform(perspective(500px) rotateX(15deg));
-  border: 3px dashed $gray-dark;
+
   border-radius: 5px;
   min-height: 300px;
 
@@ -106,7 +141,7 @@ drop-zone {
   }
 
   &.on-drag {
-	border-color: $blue-midium;
+	border-color: $blue-medium;
 
   }
   &.loaded {
@@ -131,14 +166,14 @@ drop-zone {
   min-height: 0px;
   &.nav-pills > li.active > a, &.nav-pills > li.active > a:hover, &.nav-pills > li.active > a:focus {
 	color: white;
-	background-color: $gray-midium;
+	background-color: $gray-medium;
   }
   &.nav > li > a:hover, &.nav > li > a:focus {
 	text-decoration: none;
-	background-color: $gray-midium; }
+	background-color: $gray-medium; }
 
   &.nav .open > a{
-	background-color: $gray-midium;
+	background-color: $gray-medium;
 	+ul.dropdown-menu {
 	  box-shadow: none;
 	}
@@ -251,7 +286,7 @@ drop-zone {
 	  padding-left: 5px;
 	}
 	&.active-cue {
-	  background-color: $blue-midium !important;
+	  background-color: $blue-medium !important;
 	  color:white;
 	}
 	&:hover{
@@ -267,7 +302,7 @@ drop-zone {
 	  background-color: $amber-light;
 
 	  &:hover{
-		background-color: $blue-midium;
+		background-color: $blue-medium;
 		color:white;
 
 	  }
@@ -278,7 +313,7 @@ drop-zone {
 	  background-color: white;
 
 	  &:hover{
-		background-color: $blue-midium;
+		background-color: $blue-medium;
 		color:white;
 	  }
 

@@ -66,7 +66,7 @@ app.directive('emHeightTarget', function ($window) {
 
 
 
-			scope.$watch('__height', function (newHeight, oldHeight) {
+			scope.$watch('vHeight', function (newHeight, oldHeight) {
 
 				elem.attr('style', 'height: ' + (newHeight) + 'px');
 			});
@@ -90,7 +90,8 @@ app.directive('emHeightSource', function ($timeout) {
 
 			scope.$watch(function () {
 
-				scope.__height = elem[0].offsetHeight;
+				scope.vHeight = elem[0].offsetHeight;
+				scope.vWidth = elem[0].offsetWidth;
 			});
 		}
 	}
@@ -117,3 +118,33 @@ app.directive('videoPlayer', function ($timeout) {
 
 
 } );
+
+
+/*
+ * auto resize video controls
+ */
+
+app.directive('videoControl',function($window){
+	return {
+
+		scope: {
+			controlWidth: "=vcWidth",
+			videoWidth: "=vWidth",
+			fixedWidth: "=fixedPartsWidth"
+		},
+		controller: function($scope,$element) {
+
+
+			$scope.$watch('videoWidth', function (newWidth, oldWidth) {
+				$element.attr('style', 'width: ' + ((newWidth-$scope.fixedWidth) * $scope.controlWidth - 1) + 'px');
+
+			});
+
+
+
+		}
+
+
+	}
+
+})

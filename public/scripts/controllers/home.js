@@ -66,7 +66,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 			{text: 'Now go ahead and click the Start Project button on the top', begin: 8000, end: 11999},
 			{text: 'And you can start working !', begin: 12000, end: 15999},
 			{text: 'The captions you entered will be listed on the right', begin: 16000, end: 19999},
-			{text: 'If you want to adjust them, simple click on the text you want to edit', begin: 20000, end: 23999}
+			{text: 'If you want to adjust them, simply click on the text you want to edit', begin: 20000, end: 23999}
 		]
 	};
 
@@ -514,7 +514,8 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	$scope.convert = function (milli, deli, short) {
 		if (!deli) deli = '.';
 
-		var milliseconds = milli % 1000;
+		milli = parseInt(milli);
+		var milliseconds = parseInt(milli) % 1000;
 		var seconds = Math.floor((milli / 1000) % 60);
 		var minutes = Math.floor((milli / (60 * 1000)) % 60);
 		var hours = Math.floor((milli / (60 * 60 * 1000)) % 60);
@@ -679,6 +680,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	};
 
 	$scope.toggleMute = function(){
+		//it's easier not use HTML5 muted api here because it requires two models to control
 		if(v.volume){
 			$scope.oldVolume = v.volume;
 			v.volume = 0;
@@ -719,12 +721,12 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 	$scope.dirty = false;
 
-	$scope.$watch('videoUrl', function() {
-		if (typeof $scope.videoUrl != 'undefined'){
-			v.setAttribute("controls","controls");
-		}
-
-	});
+//	$scope.$watch('videoUrl', function() {
+//		if (typeof $scope.videoUrl != 'undefined'){
+//			v.setAttribute("controls","controls");
+//		}
+//
+//	});
 
 	v.volume = 0.2; //prevent too loud video
 

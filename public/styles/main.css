@@ -110,6 +110,39 @@ drop-zone {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\0000395}}
+.video-controls {
+  color: #55595b;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\0000398}}
+.video-controls div {
+  padding: 0;
+  float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003102}}
+.video-controls div:hover span {
+  color: #6ec8f8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003108}}
+.video-controls input {
+  margin: 0;
+  padding: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003112}}
+.video-controls .video-control-play, .video-controls .video-control-mute {
+  width: 20px;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003118}}
+.video-controls .video-control-play {
+  margin-left: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003123}}
+.video-controls .video-control-time {
+  width: 160px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003130}}
 .video-player {
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
@@ -120,11 +153,10 @@ drop-zone {
   -moz-transition: all 500ms;
   -o-transition: all 500ms;
   transition: all 500ms;
-  border: 3px dashed #303030;
   border-radius: 5px;
   min-height: 300px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003103}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003138}}
 .video-player.normalize {
   -webkit-transform: none;
   -moz-transform: none;
@@ -132,59 +164,59 @@ drop-zone {
   -o-transform: none;
   transform: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003108}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003143}}
 .video-player.on-drag {
   border-color: #6ec8f8;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003112}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003147}}
 .video-player.loaded {
   border: 0;
   border-radius: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003154}}
 .global-navbar {
   background-color: #303030;
   min-height: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003121}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003156}}
 .global-navbar a {
   color: #bcbcbc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003123}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003158}}
 .global-navbar a:hover {
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003127}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003162}}
 .global-navbar.nav-pills > li {
   font-size: 12px;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003132}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003167}}
 .global-navbar.nav-pills > li.active > a, .global-navbar.nav-pills > li.active > a:hover, .global-navbar.nav-pills > li.active > a:focus {
   color: white;
   background-color: #55595b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003136}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003171}}
 .global-navbar.nav > li > a:hover, .global-navbar.nav > li > a:focus {
   text-decoration: none;
   background-color: #55595b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003175}}
 .global-navbar.nav .open > a {
   background-color: #55595b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003142}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003177}}
 .global-navbar.nav .open > a + ul.dropdown-menu {
   box-shadow: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003150}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003185}}
 .foot-navbar {
   background-color: transparent;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003155}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003190}}
 .sub-editor {
   clear: both;
   opacity: 0;
@@ -198,11 +230,11 @@ drop-zone {
   -o-transition: opacity 3000ms;
   transition: opacity 3000ms;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003160}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003195}}
 .sub-editor.show {
   opacity: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003164}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003199}}
 .sub-editor .new-cue-time {
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
@@ -217,11 +249,11 @@ drop-zone {
   color: #bcbcbc;
   padding: 0 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003170}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003205}}
 .sub-editor .new-cue-time:hover {
   color: #303030;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003175}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003210}}
 .sub-editor .new-cue-time-icon {
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
@@ -235,12 +267,12 @@ drop-zone {
   cursor: pointer;
   color: #bcbcbc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003180}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003215}}
 .sub-editor .new-cue-time-icon:hover {
   color: #303030;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003188}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003223}}
 .right-col {
   display: none;
   opacity: 0;
@@ -254,7 +286,7 @@ drop-zone {
   -o-transition: opacity 2000ms;
   transition: opacity 2000ms;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003195}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003230}}
 .right-col .tools {
   clear: both;
   -webkit-transform: translateZ(0);
@@ -268,30 +300,30 @@ drop-zone {
   transition: opacity 2000ms;
   opacity: 0.1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003204}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003239}}
 .right-col .tools a {
   font-size: 15px;
   color: #bcbcbc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003207}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003242}}
 .right-col .tools a:hover {
   color: #303030;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003217}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003252}}
 .right-col:hover .tools {
   opacity: 0.5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003220}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003255}}
 .right-col:hover.show {
   opacity: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003225}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003260}}
 .right-col.show {
   display: block;
   opacity: 1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003233}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003268}}
 .cue-list {
   width: 100%;
   padding: 20px;
@@ -311,56 +343,56 @@ drop-zone {
   -o-transition: opacity 2500ms;
   transition: opacity 2500ms;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003248}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003283}}
 .cue-list li {
   min-width: 340px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003250}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003285}}
 .cue-list li i {
   padding-left: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003253}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003288}}
 .cue-list li.active-cue {
   background-color: #6ec8f8 !important;
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003258}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003293}}
 .cue-list li:hover .cue-delete {
   opacity: 0.8;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003260}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003295}}
 .cue-list li:hover .cue-delete:hover {
   opacity: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003266}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003301}}
 .cue-list li:nth-of-type(even) {
   background-color: #edece4;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003269}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003304}}
 .cue-list li:nth-of-type(even):hover {
   background-color: #6ec8f8;
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003277}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003312}}
 .cue-list li:nth-of-type(odd) {
   background-color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003280}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003315}}
 .cue-list li:nth-of-type(odd):hover {
   background-color: #6ec8f8;
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003287}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003322}}
 .cue-list .cue-grid {
   display: inline-block;
   padding: 0 5px;
   vertical-align: bottom;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003293}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003328}}
 .cue-list .cue-begin {
   width: 80px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003298}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003333}}
 .cue-list .cue-delete {
   color: white;
   -webkit-transform: translateZ(0);
@@ -374,7 +406,7 @@ drop-zone {
   transition: all 300ms;
   opacity: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003307}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003342}}
 .cue-list .cue-text {
   overflow: hidden;
   white-space: nowrap;
@@ -382,18 +414,18 @@ drop-zone {
   text-overflow: ellipsis;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003351}}
 .screen-too-small h3 {
   color: #303030;
   font-weight: 300;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003358}}
 .pointer {
   cursor: pointer !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003359}}
 .hint {
   font-size: 14px !important;
 }
