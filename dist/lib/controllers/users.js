@@ -29,6 +29,11 @@ exports.create = function (req, res, next) {
   });
 };
 
+exports.authWithGoogle = function(req,res,next){
+	res.redirect('/');
+
+};
+
 /**
  *  Get profile of specified user
  */

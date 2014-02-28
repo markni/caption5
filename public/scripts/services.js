@@ -1,6 +1,8 @@
 app.factory('Auth', function Auth($location, $rootScope, Session, User, $cookieStore) {
 
 		// Get currentUser from cookie
+
+
 		$rootScope.currentUser = $cookieStore.get('user') || null;
 		$cookieStore.remove('user');
 
@@ -38,6 +40,7 @@ app.factory('Auth', function Auth($location, $rootScope, Session, User, $cookieS
 
 				return Session.delete(function() {
 						$rootScope.currentUser = null;
+						$cookieStore.remove('user');
 						return cb();
 					},
 					function(err) {

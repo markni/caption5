@@ -9,29 +9,29 @@ var mongoose = require('mongoose'),
  * Populate database with sample application data
  */
 
-//Clear old things, then add things in
-Thing.find({}).remove(function () {
-	Thing.create({
-			name: 'AngularJS',
-			info: 'AngularJS is a toolset for building the framework most suited to your application development.',
-			awesomeness: 10
-		}, {
-			name: 'Karma',
-			info: 'Spectacular Test Runner for JavaScript.',
-			awesomeness: 10
-		}, {
-			name: 'Express',
-			info: 'Flexible and minimalist web application framework for node.js.',
-			awesomeness: 10
-		}, {
-			name: 'MongoDB + Mongoose',
-			info: 'An excellent document database. Combined with Mongoose to simplify adding validation and business logic.',
-			awesomeness: 10
-		}, function () {
-			console.log('finished populating things');
-		}
-	);
-});
+////Clear old things, then add things in
+//Thing.find({}).remove(function () {
+//	Thing.create({
+//			name: 'AngularJS',
+//			info: 'AngularJS is a toolset for building the framework most suited to your application development.',
+//			awesomeness: 10
+//		}, {
+//			name: 'Karma',
+//			info: 'Spectacular Test Runner for JavaScript.',
+//			awesomeness: 10
+//		}, {
+//			name: 'Express',
+//			info: 'Flexible and minimalist web application framework for node.js.',
+//			awesomeness: 10
+//		}, {
+//			name: 'MongoDB + Mongoose',
+//			info: 'An excellent document database. Combined with Mongoose to simplify adding validation and business logic.',
+//			awesomeness: 10
+//		}, function () {
+//			console.log('finished populating things');
+//		}
+//	);
+//});
 
 // Clear old users, then add a default user
 User.find({name:'Test User'}).remove(function () {

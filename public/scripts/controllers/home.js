@@ -1,4 +1,4 @@
-app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth) {
+app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth, $rootScope) {
 
 	var v = document.getElementById('video');
 
@@ -292,15 +292,15 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	};
 
 	$scope.shiftTrack  = function(duration){
-		console.log(duration);
+//		console.log(duration);
 		for (var i = 0; i< $scope.project.cues.length; i++){
 			if (duration === Math.abs(duration) || $scope.project.cues[i].begin >  Math.abs(duration)) {
-				console.log('?');
+//				console.log('?');
 				$scope.project.cues[i].begin += duration;
 				$scope.project.cues[i].end += duration;
 			}
 			else {
-				console.log('??+'+$scope.project.cues[i].begin);
+//				console.log('??+'+$scope.project.cues[i].begin);
 				$scope.project.cues[i].begin += $scope.project.cues[i].begin * (duration / Math.abs(duration));
 				$scope.project.cues[i].end += $scope.project.cues[i].begin* (duration / Math.abs(duration));
 			}
@@ -733,9 +733,11 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 	if (Auth.isLoggedIn()){
 		$scope.loadProject();
-		$scope.listProjects();
+//		$scope.listProjects();
 		$scope.isLoggedIn = true;
 	}
+
+
 
 
 });
