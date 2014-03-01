@@ -186,6 +186,71 @@ drop-zone {
 	}
   }
 
+  .navbar-submenu-btn{
+	position: relative;
+	&:hover{
+	  > a > span{
+		color:$blue-medium;
+	  }
+
+	  .navbar-submenu{
+		opacity: 100;
+		pointer-events:auto;
+
+	  }
+	}
+
+	.icon-power{
+	  padding-left:10px;
+	  padding-right:10px;
+	}
+	.navbar-submenu {
+	  &:before{
+		content: ' ';
+		display: block;
+		width: 100%;
+		background-color: transparent;
+		top:-8px;
+		left:0;
+		right:0;
+		height: 10px;
+		position: absolute;
+	  }
+
+
+	  @include transform(translateZ(0));
+	  @include transition(opacity 500ms);
+	  pointer-events:none;
+	  opacity: 0;
+
+	  position: absolute;
+	  list-style: none;
+	  right: 20px;
+	  top: 40px;
+	  background-color: $gray-dark;
+	  padding: 0;
+	  margin: 0;
+	  min-width: 100px;
+	  text-align: center;
+	  &.show{
+		opacity: 100;
+		pointer-events:auto;
+
+	  }
+
+
+	  a{
+		text-decoration: none;
+		display: block;
+		padding: 10px;
+		&:hover{
+		  background-color: $gray-medium;
+		  color:$blue-medium;
+		}
+	  }
+	}
+  }
+
 }
 
 

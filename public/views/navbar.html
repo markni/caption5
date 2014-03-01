@@ -3,9 +3,19 @@
 		<li ng-show="item.public || currentUser" ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
 			<a ng-href="{{item.link}}">{{item.title}}</a>
 		</li>
-		<li class="pull-right" ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">LOGIN</a></li>
-		<li class="pull-right"  ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/signup">SIGN UP</a></li>
-		<li class="pull-right" ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">{{currentUser.name}} | LOGOUT</a></li>
+		<li class="pull-right navbar-submenu-btn pointer" ><a>{{currentUser.name}} <span class="icon-power"></span></a>
+
+			<ul class="navbar-submenu" >
+
+				<li  ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">LOGIN</a></li>
+				<li ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/signup">SIGN UP</a></li>
+				<li  ng-show="currentUser" ng-class="{active: isActive('/login')}"><a href="/settings">SETTINGS</a></li>
+				<li  ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">LOGOUT</a></li>
+
+			</ul>
+
+		</li>
+
 
 
 	</ul>

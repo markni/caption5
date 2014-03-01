@@ -5,7 +5,7 @@
 		</li>
 		<li class="pull-right" ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">LOGIN</a></li>
 		<li class="pull-right"  ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/signup">SIGN UP</a></li>
-		<li class="pull-right" ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">LOGOUT</a></li>
+		<li class="pull-right" ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">{{currentUser.name}} | LOGOUT</a></li>
 
 
 	</ul>

@@ -29,7 +29,10 @@ exports.create = function (req, res, next) {
   });
 };
 
-exports.authWithGoogle = function(req,res,next){
+exports.authCallback = function(req,res,next){
+	if(req.user) {
+		res.cookie('user', JSON.stringify(req.user.userInfo));
+	}
 	res.redirect('/');
 
 };

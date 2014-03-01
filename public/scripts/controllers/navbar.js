@@ -8,11 +8,6 @@ app.controller('navbarCtrl', function ($scope, $location, Auth) {
 			'public': true
 		},
 		{
-			'title': 'SETTINGS',
-			'link': '/settings',
-			'public': false
-		},
-		{
 			'title': 'PROJECTS',
 			'link': '/projects',
 			'public': false
@@ -33,4 +28,7 @@ app.controller('navbarCtrl', function ($scope, $location, Auth) {
 	$scope.toggleDropDown = function () {
 		$scope.dropDownOpen = !$scope.dropDownOpen;
 	}
+
+
+
 });

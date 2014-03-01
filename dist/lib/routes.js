@@ -40,7 +40,7 @@ module.exports = function (app) {
 		});
 
 	app.get('/auth/google/callback',
-		passport.authenticate('google', { failureRedirect: '/login' }), users.authWithGoogle);
+		passport.authenticate('google', { failureRedirect: '/login' }), users.authCallback);
 
 
 

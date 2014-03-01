@@ -16,14 +16,17 @@ module.exports = function () {
 	var GOOGLE_CLIENT_SECRET = "CIYRrYtSXInnQD-lFFzOkTOi";
 
 	passport.serializeUser(function (user, done) {
+
 		done(null, user.id);
 	});
 	passport.deserializeUser(function (id, done) {
+
 		User.findOne({
 			_id: id
 		}, '-salt -hashedPassword', function (err, user) { // don't ever give out the password or salt
 			done(err, user);
 		});
+
 	});
 
 	// add other strategies for more authentication flexibility
@@ -58,15 +61,30 @@ module.exports = function () {
 			callbackURL: "http://127.0.0.1:8005/auth/google/callback"
 		},
 		function(accessToken, refreshToken, profile, done) {
-			// asynchronous verification, for effect...
-			process.nextTick(function () {
 
-				// To keep the example simple, the user's Google profile is returned to
-				// represent the logged-in user.  In a typical application, you would want
-				// to associate the Google account with a user record in your database,
-				// and return that user instead.
-				return done(null, profile);
+			User.findOne({
+				email: profile._json.email
+			}, function (err, user) {
+				if (err) return done(err);
+
+				if (!user) {
+					user = new User({
+						name: profile.displayName,
+						email: profile.emails[0].value,
+						provider: 'google',
+						google: profile._json
+					});
+					user.save(function(err) {
+						if (err) console.log(err);
+						return done(err, user);
+					});
+				} else {
+					return done(err, user);
+				}
+
 			});
+
+
 		}
 	));
 
