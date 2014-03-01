@@ -50,25 +50,37 @@
 
 
 
-.btn-danger {
+.btn-google {
+	border-radius: 3px;
 	color: white;
 	background-color: #d9534f;
 	border-color: transparent; }
-.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active {
+.btn-google:hover, .btn-google:focus, .btn-google:active, .btn-google.active {
 	color: white;
 	background-color: #d2322d;
-	border-color: #ac2925; }
-.open .btn-danger.dropdown-toggle {
+	border-color: transparent; }
+.open .btn-google.dropdown-toggle {
 	color: white;
 	background-color: #d2322d;
-	border-color: #ac2925; }
-.btn-danger:active, .btn-danger.active {
+	border-color: transparent; }
+.btn-google:active, .btn-google.active {
 	background-image: none; }
-.open .btn-danger.dropdown-toggle {
+.open .btn-google.dropdown-toggle {
 	background-image: none; }
-.btn-danger.disabled, .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled:active, .btn-danger.disabled.active, .btn-danger[disabled], .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled]:active, .btn-danger[disabled].active, fieldset[disabled] .btn-danger, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger:active, fieldset[disabled] .btn-danger.active {
+.btn-google.disabled, .btn-google.disabled:hover, .btn-google.disabled:focus, .btn-google.disabled:active, .btn-google.disabled.active, .btn-google[disabled], .btn-google[disabled]:hover, .btn-google[disabled]:focus, .btn-google[disabled]:active, .btn-google[disabled].active, fieldset[disabled] .btn-google, fieldset[disabled] .btn-google:hover, fieldset[disabled] .btn-google:focus, fieldset[disabled] .btn-google:active, fieldset[disabled] .btn-google.active {
 	background-color: #d9534f;
 	border-color: transparent; }
-.btn-danger .badge {
+.btn-google .badge {
 	color: #d9534f;
 	background-color: white; }
+
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline {
+	color: #d9534f;
+}
+
+.has-error .form-control {
+	border-color: #d9534f;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}

@@ -361,6 +361,40 @@ drop-zone {
   }
 }
 
+.social-logins {
+
+  margin-bottom: 50px;
+  .divider {
+	background-color: $gray-medium;
+	height: 1px;
+	width: 100%;
+  }
+
+
+  a {
+
+
+	margin: auto;
+	width: 100%;
+
+	&:last-of-type {
+	  margin-bottom: 50px;
+	}
+
+	i {
+	  margin-right: 20px;
+
+	}
+	&.btn {
+
+	  &:active{
+		box-shadow: none;
+		-webkit-box-show:none;
+	  }
+	}
+  }
+}
+
 //Helper Classes
 .pointer {cursor: pointer !important;}
 .hint {font-size: 14px !important;}

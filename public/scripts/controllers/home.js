@@ -467,7 +467,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 		var ext = f.name.split('.').pop();
 
-		if (ext === 'srt' || ext === 'ssa') {
+		if (ext === 'srt' || ext === 'ssa' || ext === 'ass') {
 
 			readSub(f);
 

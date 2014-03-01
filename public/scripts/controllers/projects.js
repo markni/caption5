@@ -1,4 +1,7 @@
 app.controller('projectsCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth) {
+
+	$scope.project_list = null;
+
 	$scope.listProjects = function(){
 		Projects.query(function(projects){
 
@@ -9,5 +12,6 @@ app.controller('projectsCtrl', function ($scope, $route, $timeout, $http, $sce, 
 	};
 
 	$scope.listProjects();
+
 
 });
