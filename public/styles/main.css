@@ -458,11 +458,114 @@ drop-zone {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003399}}
+.video-overlay.hint {
+  color: white;
+  text-shadow: #303030 -1px 1px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003405}}
+.project-card {
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003413}}
+.project-card:hover .highlight {
+  width: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003418}}
+.project-card .highlight {
+  -webkit-transition: all 100ms;
+  -moz-transition: all 100ms;
+  -o-transition: all 100ms;
+  transition: all 100ms;
+  position: absolute;
+  width: 0px;
+  top: 10px;
+  left: 15px;
+  bottom: 0;
+  background-color: #6ec8f8;
+  z-index: 99;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003431}}
+.project-card .inner {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: white;
+  height: 150px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003435}}
+.project-card .inner > .preview {
+  height: 50px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003438}}
+.project-card .inner > h4 {
+  color: #6ec8f8;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: 300;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003439}}
+.project-card .inner > h4 > .icon-film, .project-card .inner > h4 .icon-link {
+  margin-right: 10px;
+  font-size: 16px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003449}}
+.project-card .inner .divider {
+  background-color: #edece4;
+  height: 1px;
+  width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003454}}
+.project-card .inner .misc {
+  padding-left: 20px;
+  padding-top: 5px;
+  font-size: 10px;
+  color: #55595b;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003459}}
+.project-card .inner .misc span {
+  padding-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003467}}
+.project-card.add-new-project-card:hover .inner {
+  background-color: white;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003470}}
+.project-card.add-new-project-card:hover .inner > h4 {
+  text-align: center;
+  color: #6ec8f8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003475}}
+.project-card.add-new-project-card:hover .icon-plus {
+  color: #6ec8f8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003480}}
+.project-card.add-new-project-card .inner {
+  background-color: #6ec8f8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003482}}
+.project-card.add-new-project-card .inner > h4 {
+  text-align: center;
+  color: white;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003489}}
+.project-card.add-new-project-card .icon-plus {
+  font-size: 40px;
+  color: white;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003501}}
 .pointer {
   cursor: pointer !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003400}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003502}}
 .hint {
-  font-size: 14px !important;
+  font-size: 16px !important;
 }

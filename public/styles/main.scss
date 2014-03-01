@@ -395,9 +395,111 @@ drop-zone {
   }
 }
 
+.video-overlay{
+ &.hint {
+   color:white;
+   text-shadow: $gray-dark -1px 1px;
+ }
+}
+
+.project-card{
+  cursor: pointer;
+  position: relative;
+
+
+  @include transition(all 500ms);
+
+  &:hover{
+	.highlight{
+	  width: 5px;
+	}
+
+  }
+  .highlight{
+	@include transition(all 100ms);
+	position: absolute;
+	width: 0px;
+	top:10px;
+	left:15px;
+	bottom: 0;
+	background-color: $blue-medium;
+	z-index: 99;
+  }
+
+
+
+  .inner{
+	@include transition(all 500ms);
+	background-color: white;
+	height: 150px;
+	>.preview{
+	  height: 50px;
+	}
+	>h4{
+	  >.icon-film, .icon-link{
+	  	margin-right: 10px;
+		font-size: 16px;
+	  }
+
+	  color:$blue-medium;
+	  padding: 20px;
+	  font-size: 24px;
+	  font-weight: 300;
+	}
+	.divider {
+	  background-color: $amber-light;
+	  height: 1px;
+	  width: 100%;
+	}
+	.misc {
+	  padding-left: 20px ;
+	  padding-top: 5px;
+	  font-size: 10px;
+	  color:$gray-medium;
+	  span {padding-right: 10px}
+	}
+  }
+
+  &.add-new-project-card{
+
+
+	&:hover{
+	  .inner {
+
+		background-color: $white;
+		>h4{
+		  text-align: center;
+		  color:$blue-medium;
+		}
+	  }
+	  .icon-plus {
+
+		color:$blue-medium;
+	  }
+	}
+	.inner {
+	  background-color: $blue-medium;
+	  >h4{
+		text-align: center;
+
+		color:white;
+	  }
+	}
+
+	.icon-plus {
+	  font-size: 40px;
+	  color:white;
+	}
+  }
+
+
+
+}
+
+
 //Helper Classes
 .pointer {cursor: pointer !important;}
-.hint {font-size: 14px !important;}
+.hint {font-size: 16px !important;}
 
 
 

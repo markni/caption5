@@ -514,7 +514,19 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	$scope.convert = function (milli, deli, short) {
 		if (!deli) deli = '.';
 
+		if (!milli || typeof milli != 'number'){
+			if ( short){
+				return '00:00:00';
+			}
+			else{
+				return '00:00:00:00';
+			}
+
+		}
+
 		milli = parseInt(milli);
+
+
 		var milliseconds = parseInt(milli) % 1000;
 		var seconds = Math.floor((milli / 1000) % 60);
 		var minutes = Math.floor((milli / (60 * 1000)) % 60);
