@@ -18,6 +18,7 @@
 			 class="project-card col-lg-3 col-md-4 ani-fade-in-and-translate">
 			<div class="highlight"></div>
 			<div class="inner">
+				<i ng-click="removeProject($event,project,$index)" class="fa fa-times project-delete-icon"></i>
 				<h4><span ng-class="getProjectTypeIcon(project.remote)"></span>{{project.title}}</h4>
 
 				<div class="divider"></div>

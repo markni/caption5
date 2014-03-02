@@ -51,14 +51,15 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 
 	$scope.project_id = $routeParams.projectId || null;
+	$scope.project_creator = null;
+	$scope.project_start = false;
 
 	$scope.project_list = [];
 
 
-
+	//project model
 	$scope.project = {
 		title: 'Default Project Name',
-		start: false,
 		remote: null,
 		cues: [
 			{text: 'Thanks for using Nagi!', begin: 1000, end: 3999},
@@ -70,6 +71,9 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 			{text: "Happy Subs!", begin: 24000, end: 26999}
 		]
 	};
+
+
+
 
 	$scope.removeProject = function(){
 		if ($scope.project_id){
@@ -85,10 +89,12 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		if ($scope.project_id){
 
 			Project.get({ id:$scope.project_id },function(project){
+				console.log(project);
 				$scope.project.title = project.title;
 				$scope.project.cues = project.cues;
-				$scope.project.start = true;
+				$scope.project_start = true;
 				$scope.project.remote = project.remote;
+				$scope.project_creator = project._creator;
 
 				if (project.remote !== null){
 					$scope.videoUrl =  $sce.trustAsResourceUrl(project.remote);
@@ -104,26 +110,42 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 	};
 
-	$scope.saveProject = function() {
+	$scope.saveProject = function(silence) {
 		if (Auth.isLoggedIn()) {
 			//update project
-			if ($scope.project_id){
+			if ($scope.project_id && $scope.project_creator == $rootScope.currentUser.id){
 				Project.update({ id:$scope.project_id }, $scope.project);
 				$scope.dirty = false;
-				$scope.showMsg('Changes made to project has been saved.');
+				if(!silence){
+					$scope.showMsg('Changes made to project has been saved.');
+				}
+
 			}
 			//new project
 			else{
+
 				Project.save($scope.project,function(u,h){
+					if ($scope.project_creator != $rootScope.currentUser.id)
+					{
+						$scope.showMsg('This project has been forked by you.');
+					}
+					else{
+						$scope.showMsg('A new project has been saved.');
+					}
+					$scope.project_creator = u._creator;
 					$scope.project_id = u._id;
 					$location.path('/p/'+ u._id);
 					$scope.dirty = false;
-					$scope.showMsg('A new project has been saved.');
+
+
+
 				});
 			}
 		}
 		else{
+			if(!silence){
 			$scope.showMsg('You have to ' + '<a href="/signup">create an account</a>' + ' in order to to save projects.')
+			}
 		}
 
 	};
@@ -146,7 +168,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	//start the project, file selector will be removed
 	$scope.initProject = function () {
 
-		$scope.project.start = true;
+		$scope.project_start = true;
 		$scope.openRemoteUrl = false;
 		v.pause();//stop video
 
@@ -179,7 +201,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 
 
-		if ($scope.project.start){
+		if ($scope.project_start){
 			if (event){
 				event.preventDefault(); //firefox already has this behaviour
 			}
@@ -266,6 +288,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		if (index >= 0) {
 			$scope.project.cues.splice(index, 1);
 			saveToLocal();
+			$scope.saveProject(true);
 			$scope.reloadTrack($scope.project.cues);//update live preview
 		}
 
@@ -339,6 +362,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 			$scope.reloadTrack($scope.project.cues);
 			saveToLocal();
+			$scope.saveProject(true);
 
 		}
 
@@ -460,7 +484,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 				$scope.reloadTrack($scope.project.cues);
 			}
 
-		}
+		};
 
 		reader.readAsText(f);
 	}
@@ -627,7 +651,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		}
 
 		return output;
-	}
+	};
 
 
 	$scope.isCueActive = function(cue){
@@ -712,10 +736,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 
 		}
-
-
-
-	}
+	};
 
 	$scope.getVolumeIcon = function(){
 

@@ -19,6 +19,15 @@ app.controller('projectsCtrl', function ($scope, $route, $timeout, $http, $sce, 
 		$location.path('/');
 	}
 
+	$scope.removeProject = function(event,project,index){
+		event.stopPropagation();
+		console.log(project._id);;
+		Project.remove({ id:project._id },function(){
+			$scope.project_list.splice(index, 1);
+		});
+
+	}
+
 	$scope.formatCreated = function(created){
 		var d = new Date(created);
 		return d.toLocaleDateString();
