@@ -1,14 +1,25 @@
 <div class="col-xs-12">
-<div class="row">
+	<div class="row">
 
 
-	     {{project}}
+		<div ng-click="createProject()" class="project-card col-lg-3 col-md-4 add-new-project-card">
+			<div class="inner">
 
-		<div ng-click="editProject(project)" ng-repeat="project in project_list | orderBy:'modified' track by $index" class="project-card col-lg-3 col-md-4 ">
+				<h4>Add New Project</h4>
+
+				<p class="text-center"><span class="icon-plus"></span></p>
+			</div>
+
+
+		</div>
+
+
+		<div ng-click="editProject(project)" ng-repeat="project in project_list | orderBy:'modified' track by $index"
+			 class="project-card col-lg-3 col-md-4 ani-fade-in-and-translate">
 			<div class="highlight"></div>
 			<div class="inner">
 				<h4><span ng-class="getProjectTypeIcon(project.remote)"></span>{{project.title}}</h4>
-				<div class="preview"></div>
+
 				<div class="divider"></div>
 				<div class="misc"><span class="icon-clock"></span><span>{{formatCreated(project.created)}}</span></div>
 
@@ -17,18 +28,7 @@
 
 		</div>
 
-		<div ng-click="createProject()" class="project-card col-lg-3 col-md-4 add-new-project-card">
-			<div class="inner">
-
-				<h4>Add New Project</h4>
-				<p class="text-center"><span class="icon-plus"></span></p>
-			</div>
-
-
-
-		</div>
-
-
-</div>
 
 	</div>
+
+</div>

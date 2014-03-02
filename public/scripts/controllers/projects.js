@@ -1,6 +1,6 @@
 app.controller('projectsCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth) {
 
-	$scope.project_list = null;
+	$scope.project_list = [];
 
 	$scope.listProjects = function(){
 		Projects.query(function(projects){

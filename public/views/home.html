@@ -13,9 +13,9 @@
 			<!--A simple caption maker in your browser-->
 			<!--</p>-->
 
-			<h1 class="pick-video-btn" ng-show='!videoUrl'>Start by drag & drop a video here</h1>
+			<h1 class="ani-fade-in-and-out pick-video-btn" ng-show='!videoUrl'>Start by drag & drop a video here</h1>
 
-			<p class="hint" ng-show='!videoUrl'>You can also use the old fashion <a class="pointer" ng-click="openVideo()">file picker</a> or use a <a class="pointer" ng-click="openRemoteUrl=true">online video</a></p>
+			<p class="hint ani-fade-in-and-out" ng-show='!videoUrl'>You can also use the old fashion <a class="pointer" ng-click="openVideo()">file picker</a> or use a <a class="pointer" ng-click="openRemoteUrl=true">online video</a></p>
 
 
 			<p><a class="btn btn-lg btn-blue" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
@@ -23,6 +23,11 @@
 			<p class="hint video-overlay" style="color:white" ng-show='videoUrl'>Not the the video you looking for? <a class="pointer" ng-click="openVideo()">Click
 				here to pick another</a></p>
 
+
+		</div>
+
+		<div class="over-lay-instruction" ng-if='!videoUrl&&!!project.start' >
+			<h1 class="pick-video-btn" >You will need reload your video file from your computer</h1>
 
 		</div>
 
@@ -83,7 +88,7 @@
 	<ul em-height-target class="nav nav-pills nav-stacked cue-list pull-right">
 
 
-		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer" ng-class="{'active-cue':isCueActive(cue)}">
+		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer ani-fade-in-and-out" ng-class="{'active-cue':isCueActive(cue)}">
 			<i class="fa fa-times-circle cue-delete" ng-click='removeCue(cue)'></i>
 			<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)'>{{convert(cue.begin,null,true)}}</span>
 			<span class="cue-grid cue-text" ng-click='editCue(cue)'>{{cue.text}}</span>
@@ -120,7 +125,7 @@
 
 <div>
 
-	 {{oldVolume}}
+
 	<!--debug:-->
 	<!--<textarea id="debug" rows='10'></textarea>-->
 
@@ -130,7 +135,7 @@
 <div class="col-xs-12 screen-too-small visible-xs text-center">
 
 
-	<h3>This awesome App should be <br />enjoyed in a larger screen</h3>
+	<h1 >This awesome App should be used in a larger screen. <br /><br /> After all, it's a productive tool</h1>
 
 </div>
 

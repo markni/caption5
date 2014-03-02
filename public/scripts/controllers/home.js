@@ -61,12 +61,13 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 		start: false,
 		remote: null,
 		cues: [
-			{text: 'Thanks for using Caption5!', begin: 1000, end: 3999},
-			{text: 'Looks like your video is working', begin: 4000, end: 7999},
-			{text: 'Now go ahead and click the Start Project button on the top', begin: 8000, end: 11999},
+			{text: 'Thanks for using Nagi!', begin: 1000, end: 3999},
+			{text: 'Looks like your video is working correctly', begin: 4000, end: 7999},
+			{text: "If you have not already done it, <br /> go ahead and click the Start Project button on the top", begin: 8000, end: 11999},
 			{text: 'And you can start working !', begin: 12000, end: 15999},
 			{text: 'The captions you entered will be listed on the right', begin: 16000, end: 19999},
-			{text: 'If you want to adjust them, simply click on the text you want to edit', begin: 20000, end: 23999}
+			{text: 'Hover each of them to delete or edit', begin: 20000, end: 23999},
+			{text: "Happy Subs!", begin: 24000, end: 26999}
 		]
 	};
 
@@ -79,6 +80,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	};
 
 	$scope.loadProject = function(){
+		console.log('loading.project');
 
 		if ($scope.project_id){
 
@@ -383,6 +385,8 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 			$scope.project.title = f.name;
 			$scope.showMsg('Loaded <em>'+ f.name +'</em>' + ' from local drive.');
 		}
+
+		$scope.reloadTrack($scope.project.cues);
 		$scope.$apply();
 	};
 
@@ -406,6 +410,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 			}
 
 			$scope.showMsg('Loaded <em>'+ $scope.videoUrl +'</em>' + ' from the external url.');
+			$scope.reloadTrack($scope.project.cues);
 		}
 
 	};
@@ -479,7 +484,10 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 
 			$scope.videoUrl = $sce.trustAsResourceUrl(fileURL);
+
+			$scope.reloadTrack($scope.project.cues);
 			$scope.$apply();
+
 		}
 
 	};
@@ -742,9 +750,9 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 
 	v.volume = 0.2; //prevent too loud video
 
-
+	$scope.loadProject();
 	if (Auth.isLoggedIn()){
-		$scope.loadProject();
+
 //		$scope.listProjects();
 		$scope.isLoggedIn = true;
 	}
