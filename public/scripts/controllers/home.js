@@ -111,8 +111,10 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 	};
 
 	$scope.saveProject = function(silence) {
-		if (Auth.isLoggedIn()) {
+		console.log($scope.project_creator,$rootScope.currentUser);
+		if (Auth.isLoggedIn() && $rootScope.currentUser.id) {
 			//update project
+
 			if ($scope.project_id && $scope.project_creator == $rootScope.currentUser.id){
 				Project.update({ id:$scope.project_id }, $scope.project);
 				$scope.dirty = false;
@@ -125,7 +127,7 @@ app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $loc
 			else{
 
 				Project.save($scope.project,function(u,h){
-					if ($scope.project_creator != $rootScope.currentUser.id)
+					if (!$scope.project_creator || $scope.project_creator != $rootScope.currentUser.id)
 					{
 						$scope.showMsg('This project has been forked by you.');
 					}
