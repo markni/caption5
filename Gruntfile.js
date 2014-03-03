@@ -46,6 +46,16 @@ module.exports = function (grunt) {
 			}
 		},
 
+
+		//install all vendor's js/css into html automatically
+		'bowerInstall': {
+			target: {
+				src: '<%= ame.public %>/index.html', // point to your HTML file.
+				ignorePath: '<%= ame.public %>/'
+			}
+		},
+
+
 		watch: {
 			gruntfile: {
 				files: ['Gruntfile.js']
@@ -84,14 +94,6 @@ module.exports = function (grunt) {
 			}
 		},
 		
-
-		//install all vendor's js/css into html automatically
-		'bower-install': {
-			target: {
-				src: '<%= ame.public %>/index.html', // point to your HTML file.
-				ignorePath: '<%= ame.public %>/'
-			}
-		},
 
 		// Compiles Sass to CSS and generates necessary files if requested
 		compass: {
@@ -231,10 +233,10 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('serve', function (target) {
-		grunt.task.run(['jade','compass:dev','bower-install', 'express:dev', 'open','watch']);
+		grunt.task.run(['jade','compass:dev','bowerInstall', 'express:dev', 'open','watch']);
 
 	});
 
-	grunt.registerTask('build', ['jade', 'bower-install', 'compass:dist', 'useminPrepare', 'concat', 'ngmin', 'cssmin', 'uglify', 'copy', 'usemin']);
+	grunt.registerTask('build', ['jade', 'bowerInstall', 'compass:dist', 'useminPrepare', 'concat', 'ngmin', 'cssmin', 'uglify', 'copy', 'usemin']);
 	grunt.registerTask('default', ['build']);
 };
