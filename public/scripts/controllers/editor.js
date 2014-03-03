@@ -755,6 +755,24 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 	};
 
+	$scope.getShareUrl = function(media){
+		var currentUrl = $location.absUrl();
+		var encodedUrl = encodeURIComponent(currentUrl);
+		var text = encodeURIComponent("Check out the subtitles I created for " + $scope.project.title + ' project!');
+		var title = encodeURIComponent("Subtitle for " + $scope.project.title);
+
+		if (media === 'twitter'){
+			return "https://twitter.com/intent/tweet?url="+encodedUrl + '&text='+text;
+		}
+		else if (media === 'google'){
+			return "https://plus.google.com/share?url="+encodedUrl;
+		}
+		else if (media === 'facebook'){
+			return "http://www.facebook.com/sharer.php?s=100&u="+encodedUrl + '&summary='+text + '&title='+title;
+		}
+
+	};
+
 
 
 

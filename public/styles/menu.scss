@@ -323,6 +323,17 @@ $max-level-two-num: 5;
 		display: none;
 	  }
 
+	  >a {
+		display: inline-block;
+		width: 80%;
+		color:$gray-dark;
+		text-decoration: none;
+		&:hover{
+		  color:white;
+		}
+	  }
+
+
 	  //third and futher level menu overwrite
 	  ol {
 		//move closer
