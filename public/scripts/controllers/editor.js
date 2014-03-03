@@ -1,4 +1,4 @@
-app.controller('homeCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth, $rootScope) {
+app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth, $rootScope) {
 
 	var v = document.getElementById('video');
 

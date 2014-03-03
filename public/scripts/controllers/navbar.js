@@ -3,7 +3,7 @@ app.controller('navbarCtrl', function ($scope, $location, Auth) {
 
 	$scope.menu = [
 		{
-			'title': 'HOME',
+			'title': 'EDITOR',
 			'link': '/',
 			'public': true
 		},

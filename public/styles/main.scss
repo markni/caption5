@@ -657,6 +657,29 @@ drop-zone {
   }
 }
 
+
+//svg styles
+
+$shade1: #0ba5f8;
+$shade2: #4CAFF8;
+$shade3: #6ec8f8;
+$shade4: #acdef8;
+
+.polygon{
+  .s1{
+	fill:darken($shade1,5%);
+  }
+  .s2{
+	fill:$shade2;
+  }
+  .s3{
+	fill:$shade3;
+  }
+  .s4{
+	fill:$shade4;
+  }
+}
+
 //Helper Classes
 .pointer {
   cursor: pointer !important;
