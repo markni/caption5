@@ -1,0 +1,10 @@
+<svg version="1.1" viewBox="0 0 500 300" preserveAspectRatio="xMinYMin meet"  class="polygon">
+	<polygon points="0,10 250,150 160,210" class="s1"  />
+	<polygon points="0,10 250,150 360,110" class="s2" />
+	<polygon points="500,310 250,150 360,110" class="s3"/>
+	<polygon points="500,310 250,150 160,210" class="s4" />
+	<polygon points="500,310 450,50 360,110" class="s1" />
+	<polygon points="00,10 450,50 360,110" class="s4" />
+	<polygon points="500,310 450,50 660,110" class="s3" />
+	<polygon points="500,310 650,250 660,110" class="s2" />
+</svg>

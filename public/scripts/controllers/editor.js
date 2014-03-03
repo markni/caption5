@@ -84,12 +84,12 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	};
 
 	$scope.loadProject = function(){
-		console.log('loading.project');
+
 
 		if ($scope.project_id){
 
 			Project.get({ id:$scope.project_id },function(project){
-				console.log(project);
+
 				$scope.project.title = project.title;
 				$scope.project.cues = project.cues;
 				$scope.project_start = true;
@@ -98,7 +98,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 				if (project.remote !== null){
 					$scope.videoUrl =  $sce.trustAsResourceUrl(project.remote);
-					$timeout(function(){v.pause()},500);
+					$timeout(function(){v.pause();	$scope.reloadTrack($scope.project.cues);},500);
 				}
 				else {
 					$scope.showMsg('Please reload <em>'+project.title+'</em> from your computer.');
@@ -111,7 +111,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	};
 
 	$scope.saveProject = function(silence) {
-		console.log($scope.project_creator,$rootScope.currentUser);
+
 		if (Auth.isLoggedIn() && $rootScope.currentUser.id) {
 			//update project
 

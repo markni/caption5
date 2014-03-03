@@ -3,8 +3,13 @@ app.controller('navbarCtrl', function ($scope, $location, Auth) {
 
 	$scope.menu = [
 		{
-			'title': 'EDITOR',
+			'title': 'HOME',
 			'link': '/',
+			'public': true
+		},
+		{
+			'title': 'EDITOR',
+			'link': '/editor',
 			'public': true
 		},
 		{

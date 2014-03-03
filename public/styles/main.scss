@@ -15,12 +15,14 @@ $blue-medium: #6EC8F8;
 
 html{
   height: 100%;
+  min-width: 320px !important;
 }
 
 
 body {
   min-height: 100%;
-  padding-top: 50px;
+
+  padding-top: 37px;
   background: $amber-light;
   @include transition(background-color 1000ms ease-in);
   padding-bottom: 70px;
@@ -297,8 +299,12 @@ drop-zone {
 
 }
 
-.right-col {
+.left-col{
+  margin-top:50px !important;
+}
 
+.right-col {
+  margin-top:50px !important;
   display: none;
   opacity: 0;
   @include transform(translateZ(0));
@@ -670,13 +676,145 @@ $shade4: #acdef8;
 	fill:darken($shade1,5%);
   }
   .s2{
-	fill:$shade2;
+	fill:darken($shade2,5%);
   }
   .s3{
-	fill:$shade3;
+	fill:darken($shade3,5%);
   }
   .s4{
-	fill:$shade4;
+	fill:darken($shade4,5%);
+  }
+}
+
+.section-top{
+  min-height: 600px;
+  background-image:url('/images/polygon.jpg') ;
+  .inner{
+	padding-top: 100px;
+	h3{
+	  color:$amber-light;
+	}
+	h1{
+	  color:$amber-light;
+	}
+	.try-it-btn{
+	  font-size: 25px;
+	  margin-top: 30px;
+	  font-weight: 300;
+	  a{
+		text-decoration: none;
+		color:white;
+	  }
+
+
+	}
+  }
+
+}
+
+
+.section-screen{
+
+  min-height: 600px;
+ .inner{
+   padding-top: 60px;
+   h2{
+	 font-size: 60px;
+	 color:$gray-dark;
+   }
+   .screen-preview{
+	 width:600px;
+	 height: 350px;
+	 background: url('/images/nagi-screen.jpg') no-repeat;
+	 background-size: 100%;
+	 margin: 50px auto;
+	 border: white 20px solid;
+	 box-shadow: -1px 1px 3px rgba($gray-light,0.5);
+   }
+
+ }
+}
+
+.section-support{
+
+  min-height: 600px;
+  background-color: #cbcdd4;
+  .inner{
+	padding-top: 60px;
+	.support-list{
+	  margin-top: 50px;
+	  color:$amber-light;
+	  font-size: 20px;
+	  text-shadow: -1px -1px 3px $gray-light;
+	  font-weight: 300;
+	  .icons {
+
+	  }
+	}
+
+	h2,h3{
+	  text-shadow: -1px -1px 3px $gray-light;
+	  color:$amber-light;
+	}
+	h3{
+	  line-height: 40px;
+
+	}
+
+
+  }
+}
+
+.section-share{
+  .inner{
+	padding-top: 60px;
+	button{
+	  margin-top: 30px;
+	  a{
+		font-size: 20px;
+		color:white;
+		font-weight: 300;
+
+	  }
+	}
+
+  }
+
+
+}
+
+.home-page-sections{
+  padding: 30px 0;
+  width: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  .inner{
+	a{
+	  text-decoration: none;
+	  color:darken($blue-medium,20%);
+	}
+	em{
+	  color:darken($blue-medium,20%);
+	  font-style:normal;
+	}
+	h1{
+	  font-weight: 300;
+	  font-size: 77px;
+
+	}
+	h2{
+	  font-weight: 300;
+	  font-size: 50px;
+
+	}
+
+	h3{
+	  font-weight: 300;
+	  font-size: 30px;
+
+	}
+
   }
 }
 

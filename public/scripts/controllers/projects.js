@@ -16,12 +16,12 @@ app.controller('projectsCtrl', function ($scope, $route, $timeout, $http, $sce, 
 	}
 
 	$scope.createProject = function(){
-		$location.path('/');
+		$location.path('/editor');
 	}
 
 	$scope.removeProject = function(event,project,index){
 		event.stopPropagation();
-		console.log(project._id);;
+		console.log(project._id);
 		Project.remove({ id:project._id },function(){
 			$scope.project_list.splice(index, 1);
 		});

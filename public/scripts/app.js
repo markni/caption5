@@ -8,6 +8,10 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
 
 	$routeProvider
 		.when('/', {
+			templateUrl: '/views/home.html',
+			controller: 'homeCtrl'
+		})
+		.when('/editor', {
 			templateUrl: '/views/editor.html',
 			controller: 'editorCtrl'
 		})
