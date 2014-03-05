@@ -1,11 +1,14 @@
 app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth, $rootScope) {
 
 	var v = document.getElementById('video');
+	var y = document.getElementById('ytPlayer');
+	var ytplayer;
 
 
 	$scope.system_msg = null;
 	$scope.hasMsg = false;
 	$scope.openRemoteUrl = false;
+	$scope.project_youtube = false;
 
 	$scope.timeouts = [];
 
@@ -17,6 +20,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	$scope.currentTime = 0;
 	$scope.volume = 0;
 	$scope.duration = 0;
+	$scope.youtubeHeight = 0;
 
 
 
@@ -97,8 +101,18 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 				$scope.project_creator = project._creator;
 
 				if (project.remote !== null){
-					$scope.videoUrl =  $sce.trustAsResourceUrl(project.remote);
-					$timeout(function(){v.pause();	$scope.reloadTrack($scope.project.cues);},500);
+					if(project.remote.search("youtube.com")>0){
+						$scope.youtubeUrl =  project.remote;
+						$scope.videoUrl = $sce.trustAsResourceUrl("dummy.mp4");
+						$scope.isPaused = true;
+						$scope.project_youtube = true;
+					}
+					else{
+						$scope.videoUrl =  $sce.trustAsResourceUrl(project.remote);
+						$timeout(function(){v.pause();	$scope.reloadTrack($scope.project.cues);},500);
+					}
+
+
 				}
 				else {
 					$scope.showMsg('Please reload <em>'+project.title+'</em> from your computer.');
@@ -203,12 +217,25 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 
 
+
 		if ($scope.project_start){
 			if (event){
 				event.preventDefault(); //firefox already has this behaviour
 			}
 
-			v.paused ? v.play() : v.pause();
+
+
+			if ($scope.project_youtube){
+
+				$scope.isPaused = !$scope.isPaused;
+
+			}
+
+			else{
+				v.paused ? v.play() : v.pause();
+			}
+
+
 		}
 
 
@@ -338,10 +365,18 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 	$scope.navigatedTo = function (milli, autoplay) {
 //		console.log(milli);
+		var seconds =  milli / 1000;
 
-		v.currentTime = milli / 1000;
-		autoplay && v.play();
-		!autoplay && v.pause();
+		if ($scope.project_youtube){
+			$scope.$broadcast('setcurrenttime', [seconds]);
+		}
+		else{
+
+			v.currentTime = seconds;
+			autoplay && v.play();
+			!autoplay && v.pause();
+		}
+
 
 	};
 
@@ -421,22 +456,38 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	$scope.loadOnlineVideo = function(){
 		if ($scope.remoteUrl){
 
-			$scope.videoUrl = $sce.trustAsResourceUrl($scope.remoteUrl);
-			$scope.project.remote = $scope.remoteUrl;
+			//youtube video
+			if ($scope.remoteUrl.search('youtube.com')>0){
 
-			var fname = '';
-			try{
-				fname = $scope.project.remote.split('/').pop();
-			}catch(e){
-				console.log(e);
+				$scope.youtubeUrl =  $scope.remoteUrl;
+				$scope.project_youtube = true;
+				$scope.videoUrl = $sce.trustAsResourceUrl("dummy.mp4");
+				$scope.project.remote = $scope.remoteUrl;
+
+				$scope.showMsg('Loaded <em>'+ $scope.youtubeUrl +'</em>' + ' from youtube.');
+
+
+			}
+			else{
+				$scope.videoUrl = $sce.trustAsResourceUrl($scope.remoteUrl);
+				$scope.project.remote = $scope.remoteUrl;
+
+				var fname = '';
+				try{
+					fname = $scope.project.remote.split('/').pop();
+				}catch(e){
+					console.log(e);
+				}
+
+				if (fname){
+					$scope.project.title = fname;
+				}
+
+				$scope.showMsg('Loaded <em>'+ $scope.videoUrl +'</em>' + ' from the external url.');
+				$scope.reloadTrack($scope.project.cues);
 			}
 
-			if (fname){
-				$scope.project.title = fname;
-			}
 
-			$scope.showMsg('Loaded <em>'+ $scope.videoUrl +'</em>' + ' from the external url.');
-			$scope.reloadTrack($scope.project.cues);
 		}
 
 	};
@@ -720,7 +771,15 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	};
 
 	$scope.setCurrentTime= function(){
-		v.currentTime = $scope.currentTime;
+		if($scope.project_youtube){
+
+			$scope.$broadcast('setcurrenttime', [$scope.currentTime]);
+
+		}
+		else{
+			v.currentTime = $scope.currentTime;
+		}
+
 
 
 	};
