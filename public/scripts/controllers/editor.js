@@ -347,7 +347,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 		else {
 			$scope.newCue[type] = 0;
 		}
-
+		$scope.saveProject(true);
 		$scope.reloadTrack($scope.project.cues);
 	}
 
@@ -361,7 +361,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 		else {
 			$scope.newCue[type] = 0;
 		}
-
+		$scope.saveProject(true);
 		$scope.reloadTrack($scope.project.cues);
 	};
 
