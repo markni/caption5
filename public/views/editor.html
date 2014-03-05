@@ -83,17 +83,17 @@
 				   class="form-control main-caption-input" ng-model='newCue.text'>
 		</form>
 
-		<div class="pull-left" ng-show='editMode'><i ng-click="modifyTime('begin',-200)"
-													 class="fa fa-step-backward new-cue-time-icon"
+		<div class="pull-left" ng-show='editMode'><i ng-click="syncToCurrent('begin')" class="fa fa-angle-double-down new-cue-time-icon" title="sync to current frame"></i> <i ng-click="modifyTime('begin',-200)"
+													 class="fa  fa-angle-left new-cue-time-icon"
 													 title="-200ms"></i><span class="new-cue-time"
 																			  title="seek to this time"
 																			  ng-click='navigatedTo(newCue.begin,false)'>{{convert(newCue.begin)}}</span><i
-				ng-click="modifyTime('begin',200)" class="fa fa-step-forward  new-cue-time-icon" title="+200ms"></i>
+				ng-click="modifyTime('begin',200)" class="fa fa-angle-right  new-cue-time-icon" title="+200ms"></i>
 		</div>
 		<div class="pull-right" ng-show='editMode'><i ng-click="modifyTime('end',-200)"
-													  class="fa fa-step-backward  new-cue-time-icon" title="-200ms"></i><span
+													  class="fa fa-angle-left  new-cue-time-icon" title="-200ms"></i><span
 				class="new-cue-time" title="seek to this time" ng-click='navigatedTo(newCue.end,false)'>{{convert(newCue.end)}}</span><i
-				ng-click="modifyTime('end',200)" class="fa fa-step-forward  new-cue-time-icon" title="+200ms"></i></div>
+				ng-click="modifyTime('end',200)" class="fa fa-angle-right  new-cue-time-icon" title="+200ms"></i><i ng-click="syncToCurrent('end')" class="fa fa-angle-double-down new-cue-time-icon" title="sync to current frame"></i></div>
 	</div>
 
 </div>

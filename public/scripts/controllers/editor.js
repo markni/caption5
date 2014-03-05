@@ -334,9 +334,22 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 		$scope.editMode = true;
 		$scope.newCue = cue;
 
-		$scope.navigatedTo(cue.begin, false);
+//		$scope.navigatedTo(cue.begin, false);
 
 	};
+
+	$scope.syncToCurrent = function(type){
+		var newTime = parseInt($scope.currentTime*1000);
+		if (newTime > 0) {
+			$scope.newCue[type] = newTime;
+
+		}
+		else {
+			$scope.newCue[type] = 0;
+		}
+
+		$scope.reloadTrack($scope.project.cues);
+	}
 
 	$scope.modifyTime = function (type, duration) {
 

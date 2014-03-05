@@ -292,6 +292,9 @@ drop-zone {
 	@include transition(color 200ms);
 	cursor: pointer;
 	color: $gray-light;
+	display: inline-block;
+	width: 15px;
+
 	&:hover {
 	  color: $gray-dark;
 	}

@@ -298,7 +298,7 @@ app.directive('youtubePlayer',function($window,$interval){
 
 			scope.$on('setcurrenttime', function(event, mass) {
 
-				var seconds = parseInt(mass[0]);
+				var seconds = parseFloat(mass[0]);
 
 
 				if (typeof seconds  == 'number' && !isNaN(seconds) ){
