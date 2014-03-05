@@ -41,15 +41,16 @@
 
 		</video>
 
-
+		<div ng-mousedown='togglePause()'>
 		<object youtube-current-time="currentTime" youtube-duration="duration" youtube-volume="volume"
 				youtube-paused="isPaused" youtube-url="youtubeUrl" ng-show="!!project_youtube" youtube-player
 				left-col-width="leftColWidth" type="application/x-shockwave-flash" id="ytPlayer"
 				data="http://www.youtube.com/apiplayer?enablejsapi=1&version=3" width="1250"
 				height="703.125">
 			<param name="allowScriptAccess" value="always">
-		</object>
 
+		</object>
+		</div>
 
 	</div>
 

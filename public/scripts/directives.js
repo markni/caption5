@@ -310,6 +310,7 @@ app.directive('youtubePlayer',function($window,$interval){
 
 
 
+
 		}
 	}
 });

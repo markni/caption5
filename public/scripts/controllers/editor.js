@@ -221,6 +221,8 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 
 
+
+
 		if ($scope.project_start){
 			if (event){
 				event.preventDefault(); //firefox already has this behaviour
