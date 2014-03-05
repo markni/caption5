@@ -194,14 +194,6 @@ app.directive('youtubePlayer',function($window,$interval){
 				$element[0].height =  $scope.videoWidth*9/16;
 			}
 
-			$window.onReady = function(event) {
-				console.log('About to start playback.');
-
-			}
-
-			$window.onPlayerStateChange = function(event) {
-				console.log('State is', event.data);
-			}
 
 			$window.onYouTubePlayerReady = function(playerId) {
 
@@ -209,8 +201,14 @@ app.directive('youtubePlayer',function($window,$interval){
 				if($scope.youtubeUrl && $scope.extractYoutubeId($scope.youtubeUrl)){
 					$scope.youtubeId =$scope.extractYoutubeId($scope.youtubeUrl);
 
+
 					$element[0].loadVideoById($scope.youtubeId);
-//					element[0].setVolume($scope.youtubeVolume*100);
+					if ($scope.youtubePaused){
+						$element[0].pauseVideo();
+					}
+
+					element[0].setVolume($scope.youtubeVolume*100);
+
 
 
 					$interval(function(){
