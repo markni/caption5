@@ -184,8 +184,14 @@ app.directive('youtubePlayer',function($window,$interval){
 			function updatePlayerInfo() {
 				// Also check that at least one function exists since when IE unloads the
 				// page, it will destroy the SWF before clearing the interval.
+
+
 				if($element[0] && $element[0].getDuration) {
 					$scope.youtubeDuration = parseInt($element[0].getDuration());
+				}
+
+				if ( $element[0].getCurrentTime && typeof $element[0].getCurrentTime() == "number"){
+					$scope.youtubeCurrentTime = $element[0].getCurrentTime();
 				}
 			}
 
@@ -206,16 +212,20 @@ app.directive('youtubePlayer',function($window,$interval){
 					if ($scope.youtubePaused){
 						$element[0].pauseVideo();
 					}
-
-					element[0].setVolume($scope.youtubeVolume*100);
+////
+//					if($scope.youtubeVolume && element[0].setVolume){
+//						var v =  $scope.youtubeVolume*100;
+//						element[0].setVolume(v);
+//					}
+////					element[0].setVolume($scope.youtubeVolume*100);
 
 
 
 					$interval(function(){
+
 						updatePlayerInfo();
-						if ( $element[0].getCurrentTime && typeof $element[0].getCurrentTime() == "number"){
-							$scope.youtubeCurrentTime = $element[0].getCurrentTime();
-						}
+
+
 					},250);
 				}
 

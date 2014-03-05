@@ -818,6 +818,19 @@ $shade4: #acdef8;
   }
 }
 
+.simulate-cues{
+  color:white;
+  font-size:30px;
+  text-align: center;
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  font-family: 'Lato', '黑体';
+  /*color:white;*/
+  text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+}
+
 //Helper Classes
 .pointer {
   cursor: pointer !important;

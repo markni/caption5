@@ -23,6 +23,9 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	$scope.youtubeHeight = 0;
 
 
+	$scope.currentCue = "";
+
+
 
 	var avgDelay = 1500; // 500ms delay
 
@@ -243,60 +246,62 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 	//live preview created track
 	$scope.reloadTrack = function (array) {
-		$scope.dirty = true;
-		var track;
+		//only chrome support this for now, let's use the fake one for now
 
-		try {
-
-
-//		console.log(typeof v.addTextTrack);
-			if (typeof v.addTextTrack != 'undefined') {
-
-//			console.log(typeof  v.textTracks["subtitles"]);
-				if (v.textTracks && v.textTracks[0]) {
-//				console.log('has old cues!'); //clear old tracks
-					track = v.textTracks[0];
-					if (track.cues) {
-						var len = track.cues.length;
-						for (var i = 0; i < len; i++) {
-							track.cues && track.cues[0] && track.removeCue(track.cues[0]);
-						}
-					}
-
-				}
-				else {
-					//console.log('no old cues!');
-
-					track = v.addTextTrack("subtitles");
-				}
-
-				if (isNaN(v.textTracks[0].mode)) {
-					track.mode = "showing";
-				}
-				else {
-					track.mode = 2;
-				}
-
-				for (var i = 0; i < array.length; i++) {
-
-					var begin = array[i].begin / 1000;
-					var next = (array[i + 1] === undefined) ? (v.duration || 0) : (array[i + 1].begin) / 1000;
-					next = next ? next - 0.001 : next;
-
-					var end = (array[i].end) ? (array[i].end / 1000) : next;
-
-					var text = array[i].text.replace(/<br(|\/| \/)>/g,'\n'); //replace <br/> <br> <br /> with new line in vtt
-
-					if (begin && end && text) {
-						track.addCue(createCue(begin, end, text));
-//					console.log('addCue: ' + text +' ' + begin + ' --> ' + end);
-					}
-				}
-			}
-
-		} catch (e) {
-
-		}
+//		$scope.dirty = true;
+//		var track;
+//
+//		try {
+//
+//
+////		console.log(typeof v.addTextTrack);
+//			if (typeof v.addTextTrack != 'undefined') {
+//
+////			console.log(typeof  v.textTracks["subtitles"]);
+//				if (v.textTracks && v.textTracks[0]) {
+////				console.log('has old cues!'); //clear old tracks
+//					track = v.textTracks[0];
+//					if (track.cues) {
+//						var len = track.cues.length;
+//						for (var i = 0; i < len; i++) {
+//							track.cues && track.cues[0] && track.removeCue(track.cues[0]);
+//						}
+//					}
+//
+//				}
+//				else {
+//					//console.log('no old cues!');
+//
+//					track = v.addTextTrack("subtitles");
+//				}
+//
+//				if (isNaN(v.textTracks[0].mode)) {
+//					track.mode = "showing";
+//				}
+//				else {
+//					track.mode = 2;
+//				}
+//
+//				for (var i = 0; i < array.length; i++) {
+//
+//					var begin = array[i].begin / 1000;
+//					var next = (array[i + 1] === undefined) ? (v.duration || 0) : (array[i + 1].begin) / 1000;
+//					next = next ? next - 0.001 : next;
+//
+//					var end = (array[i].end) ? (array[i].end / 1000) : next;
+//
+//					var text = array[i].text.replace(/<br(|\/| \/)>/g,'\n'); //replace <br/> <br> <br /> with new line in vtt
+//
+//					if (begin && end && text) {
+//						track.addCue(createCue(begin, end, text));
+////					console.log('addCue: ' + text +' ' + begin + ' --> ' + end);
+//					}
+//				}
+//			}
+//
+//		} catch (e) {
+//
+//		}
 
 	};
 
@@ -386,8 +391,15 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 		if ($scope.newCue.text) {
 //			console.log('x');
 			if (!$scope.editMode) {
-				$scope.newCue.begin = parseInt(v.currentTime * 1000);
-				$scope.newCue.end = parseInt(v.currentTime * 1000) + avgDelay;
+				if($scope.project_youtube){
+					$scope.newCue.begin = parseInt($scope.currentTime * 1000);
+					$scope.newCue.end = parseInt($scope.currentTime * 1000) + avgDelay;
+				}
+				else{
+					$scope.newCue.begin = parseInt(v.currentTime * 1000);
+					$scope.newCue.end = parseInt(v.currentTime * 1000) + avgDelay;
+				}
+
 //				console.log($scope.newCue);
 				$scope.project.cues.push($scope.newCue);
 
@@ -707,9 +719,13 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	};
 
 
+	$scope.getCueFontSize = function(){
+		return {'font-size':parseInt($scope.leftColWidth) /35 + 'px'};
+	}
+
 	$scope.isCueActive = function(cue){
 		if ($scope.currentTime * 1000>=cue.begin && $scope.currentTime * 1000 <= cue.end ){
-
+			$scope.currentCue = cue;
 			return true;
 		}
 		else {

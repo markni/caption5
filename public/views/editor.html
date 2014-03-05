@@ -26,8 +26,12 @@
 
 		</div>
 
-		<div class="over-lay-instruction" ng-if='!videoUrl&&!!project_start' >
+		<div class="over-lay-instruction" ng-if='!videoUrl&&!!project_start'  >
 			<h1 class="pick-video-btn" >You will need reload your video file from your computer</h1>
+
+		</div>
+
+		<div class="simulate-cues" ng-bind-html="currentCue.text" ng-if='videoUrl&&!!project_start' ng-style="getCueFontSize()" >
 
 		</div>
 
@@ -41,7 +45,7 @@
 		<object youtube-current-time="currentTime" youtube-duration="duration" youtube-volume="volume"
 				youtube-paused="isPaused" youtube-url="youtubeUrl" ng-show="!!project_youtube" youtube-player
 				left-col-width="leftColWidth" type="application/x-shockwave-flash" id="ytPlayer"
-				data="http://www.youtube.com/apiplayer?enablejsapi=1&version=3&origin=https://127.0.0.1:8005" width="1250"
+				data="http://www.youtube.com/apiplayer?enablejsapi=1&version=3" width="1250"
 				height="703.125">
 			<param name="allowScriptAccess" value="always">
 		</object>
