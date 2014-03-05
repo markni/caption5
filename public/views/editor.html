@@ -31,7 +31,7 @@
 
 		</div>
 
-		<div class="simulate-cues" ng-bind-html="currentCue.text" ng-if='videoUrl&&!!project_start' ng-style="getCueFontSize()" >
+		<div class="simulate-cues" ng-bind-html="getCurrentCueText()" ng-if='videoUrl&&!!project_start' ng-style="getCueFontSize()" >
 
 		</div>
 
@@ -70,7 +70,7 @@
 
 	<form ng-submit='loadOnlineVideo()' >
 
-		<input placeholder="Paste your remote video file link here and press enter (ex. http://domain.com/somefile.mp4)" type="text" class="form-control remote-url-input" ng-class="{'hide':!!project_start,'show':!!openRemoteUrl}"  ng-model="remoteUrl" >
+		<input placeholder="Paste your remote video file link here and press enter (ex. http://domain.com/somefile.mp4 OR http://www.youtube.com/watch?v=duKL2dAJN6I)" type="text" class="form-control remote-url-input" ng-class="{'hide':!!project_start,'show':!!openRemoteUrl}"  ng-model="remoteUrl" >
 
 	</form>
 

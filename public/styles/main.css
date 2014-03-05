@@ -925,11 +925,12 @@ drop-zone {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003821}}
 .simulate-cues {
+  z-index: 99999;
   color: white;
   font-size: 30px;
   text-align: center;
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   left: 0;
   right: 0;
   font-family: 'Lato', '黑体';
@@ -937,12 +938,12 @@ drop-zone {
   text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003835}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003836}}
 .pointer {
   cursor: pointer !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003839}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Github\/ame-master\/public\/styles\/main\.scss}line{font-family:\00003840}}
 .hint {
   font-size: 16px !important;
 }

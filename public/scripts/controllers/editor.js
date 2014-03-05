@@ -23,7 +23,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	$scope.youtubeHeight = 0;
 
 
-	$scope.currentCue = null;
+	$scope.currentCues = [];
 
 
 
@@ -415,7 +415,13 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 		}
 
-		v.play();
+		if($scope.project_youtube){
+			v.play();
+		}
+		else{
+			$scope.isPaused = false;
+		}
+
 
 	};
 
@@ -758,50 +764,64 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	};
 
 
+	$scope.getCurrentCueText = function(){
+		var text = [];
+		for (var i=0;i<$scope.currentCues.length;i++){
+			text.push($scope.currentCues[i].text);
+		}
+		return text.join('<br />');
+	};
+
 	$scope.$on('timeupdate', function(){
 		$scope.onTimeUpdate();
 	});
 
 	$scope.onTimeUpdate = function(){
-		console.log('debug');
+
 		if(!$scope.project_youtube){
 			$scope.currentTime = v.currentTime;
 		}
 
 		var flag = false;
 		var currentTime = $scope.currentTime * 1000;
+		$scope.currentCues = [];
 
 		for (var i=0;i<$scope.project.cues.length;i++){
-			console.log(currentTime);
 			if ( currentTime>=$scope.project.cues[i].begin && currentTime <= $scope.project.cues[i].end){
-				$scope.currentCue =$scope.project.cues[i];
+				$scope.currentCues.push($scope.project.cues[i]);
 				flag = true;
-				break;
+
 			}
 		}
 
 		if (!flag){
-			$scope.currentCue = null;
+			$scope.currentCues = [];
 		}
 
-		$scope.$apply();
+//		$scope.$apply();
 	};
 
 	$scope.onPause = function(){
+		if(!$scope.project_youtube){
 		$scope.isPaused = true;
 		$scope.$apply();
+		}
 	};
 
 
 	$scope.onPlay = function(){
+		if(!$scope.project_youtube){
 		$scope.duration = v.duration;
 		$scope.isPaused = false;
 		$scope.$apply();
+		}
 	};
 
 	$scope.onVolumeChange = function(){
+		if(!$scope.project_youtube){
 		$scope.volume = v.volume;
 		$scope.$apply();
+		}
 	};
 
 
