@@ -443,7 +443,14 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	$scope.onEdit = function (evt) {
 //		console.log(evt.which);
 		if (evt.which !== 13) {
-			v.pause();
+			if($scope.project_youtube){
+				$scope.isPaused = true;
+			}
+			else{
+				v.pause();
+			}
+
+
 		}
 
 	};
