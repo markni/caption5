@@ -23,7 +23,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	$scope.youtubeHeight = 0;
 
 
-	$scope.currentCue = "";
+	$scope.currentCue = null;
 
 
 
@@ -725,7 +725,6 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 	$scope.isCueActive = function(cue){
 		if ($scope.currentTime * 1000>=cue.begin && $scope.currentTime * 1000 <= cue.end ){
-			$scope.currentCue = cue;
 			return true;
 		}
 		else {
@@ -759,8 +758,32 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	};
 
 
+	$scope.$on('timeupdate', function(){
+		$scope.onTimeUpdate();
+	});
+
 	$scope.onTimeUpdate = function(){
-		$scope.currentTime = v.currentTime;
+		console.log('debug');
+		if(!$scope.project_youtube){
+			$scope.currentTime = v.currentTime;
+		}
+
+		var flag = false;
+		var currentTime = $scope.currentTime * 1000;
+
+		for (var i=0;i<$scope.project.cues.length;i++){
+			console.log(currentTime);
+			if ( currentTime>=$scope.project.cues[i].begin && currentTime <= $scope.project.cues[i].end){
+				$scope.currentCue =$scope.project.cues[i];
+				flag = true;
+				break;
+			}
+		}
+
+		if (!flag){
+			$scope.currentCue = null;
+		}
+
 		$scope.$apply();
 	};
 

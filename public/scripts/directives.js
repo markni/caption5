@@ -192,7 +192,10 @@ app.directive('youtubePlayer',function($window,$interval){
 
 				if ( $element[0].getCurrentTime && typeof $element[0].getCurrentTime() == "number"){
 					$scope.youtubeCurrentTime = $element[0].getCurrentTime();
+					$scope.$emit('timeupdate');
 				}
+
+
 			}
 
 			function _run() {
@@ -212,13 +215,6 @@ app.directive('youtubePlayer',function($window,$interval){
 					if ($scope.youtubePaused){
 						$element[0].pauseVideo();
 					}
-////
-//					if($scope.youtubeVolume && element[0].setVolume){
-//						var v =  $scope.youtubeVolume*100;
-//						element[0].setVolume(v);
-//					}
-////					element[0].setVolume($scope.youtubeVolume*100);
-
 
 
 					$interval(function(){
