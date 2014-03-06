@@ -748,7 +748,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 
 	$scope.getCueFontSize = function(){
-		return {'font-size':parseInt($scope.leftColWidth) /35 + 'px'};
+		return {'font-size':parseInt($scope.leftColWidth) /45 + 'px'};
 	}
 
 	$scope.isCueActive = function(cue){

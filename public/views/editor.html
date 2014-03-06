@@ -1,7 +1,5 @@
-
-
-
-<div em-width-source drop-zone ng-class='{"col-lg-8 col-lg-offset-1 col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project_start, "col-lg-8 col-lg-offset-2":!project_start}'
+<div em-width-source drop-zone
+	 ng-class='{"col-lg-8 col-lg-offset-1 col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-1":!!project_start, "col-lg-8 col-lg-offset-2":!project_start}'
 	 class="video-drop-zone left-col  col-xs-12 hidden-xs">
 
 
@@ -15,65 +13,81 @@
 
 			<h1 class="ani-fade-in-and-out pick-video-btn" ng-show='!videoUrl'>Start by drag & drop a video here</h1>
 
-			<p class="hint ani-fade-in-and-out" ng-show='!videoUrl'>You can also use the old fashion <a class="pointer" ng-click="openVideo()">file picker</a> or use a <a class="pointer" ng-click="openRemoteUrl=true">online video</a></p>
+			<p class="hint ani-fade-in-and-out" ng-show='!videoUrl'>You can also use the old fashion <a class="pointer"
+																										ng-click="openVideo()">file
+				picker</a> or use a <a class="pointer" ng-click="openRemoteUrl=true">online video</a></p>
 
 
-			<p><a class="btn btn-lg btn-blue" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start project.</a></p>
+			<p><a class="btn btn-lg btn-blue" ng-show='videoUrl' ng-click="initProject()">Looking Good? Start
+				project.</a></p>
 
-			<p class="hint video-overlay" style="color:white" ng-show='videoUrl'>Not the the video you looking for? <a class="pointer" ng-click="openVideo()">Click
+			<p class="hint video-overlay" style="color:white" ng-show='videoUrl'>Not the the video you looking for? <a
+					class="pointer" ng-click="openVideo()">Click
 				here to pick another</a></p>
 
 
 		</div>
 
-		<div class="over-lay-instruction" ng-if='!videoUrl&&!!project_start'  >
-			<h1 class="pick-video-btn" >You will need reload your video file from your computer</h1>
+		<div class="over-lay-instruction" ng-if='!videoUrl&&!!project_start'>
+			<h1 class="pick-video-btn">You will need reload your video file from your computer</h1>
 
 		</div>
 
-		<div class="simulate-cues" ng-bind-html="getCurrentCueText()" ng-if='videoUrl&&!!project_start' ng-style="getCueFontSize()" >
+		<div class="simulate-cues" ng-bind-html="getCurrentCueText()" ng-show='videoUrl&&!!project_start'
+			 ng-style="getCueFontSize()">
+
+		</div>
+
+		<div class="video-title ani-fade-in-and-out" ng-show='!!videohover&&!!project_start'><h1 >{{project.title}}</h1>
 
 		</div>
 
 		<div ng-mousedown='togglePause($event)' ng-mouseover="videohover=true" ng-mouseleave="videohover=false">
-		<video ng-show="!project_youtube"   em-height-source video-player class="video-player" ng-class='{normalize:!!project_start,loaded:!!videoUrl,"on-drag":!!onDrag}'
-			   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%">
+			<video ng-show="!project_youtube" em-height-source video-player class="video-player"
+				   ng-class='{normalize:!!project_start,loaded:!!videoUrl,"on-drag":!!onDrag}'
+				   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%">
 
-		</video>
+			</video>
 
 
-		<object youtube-current-time="currentTime" youtube-duration="duration" youtube-volume="volume"
-				youtube-paused="isPaused" youtube-url="youtubeUrl" ng-show="!!project_youtube" youtube-player
-				left-col-width="leftColWidth" youtube-title="project.title" type="application/x-shockwave-flash" id="ytPlayer"
-				data="http://www.youtube.com/apiplayer?enablejsapi=1&version=3" width="1250"
-				height="703.125">
-			<param name="allowScriptAccess" value="always">
+			<object youtube-current-time="currentTime" youtube-duration="duration" youtube-volume="volume"
+					youtube-paused="isPaused" youtube-url="youtubeUrl" ng-show="!!project_youtube" youtube-player
+					left-col-width="leftColWidth" youtube-title="project.title" type="application/x-shockwave-flash"
+					id="ytPlayer"
+					data="http://www.youtube.com/apiplayer?enablejsapi=1&version=3" width="1250"
+					height="703.125">
+				<param name="allowScriptAccess" value="always">
 
-		</object>
+			</object>
 		</div>
-
 
 
 	</div>
 
-	{{volume}}
 
 	<div class="video-controls" class="col-xs-12" style="height: 20px; width: 100%;">
-		<div class="video-control-play text-left" ng-click="togglePause()"><span  ng-class="{'icon-control-pause':!isPaused,'icon-control-play':!!isPaused}"></span></div>
-		<div video-control vc-width="0.9" v-width="leftColWidth"  fixed-parts-width="230" class="col-xs-7">
-			<input type=range min=0 max={{duration}}  ng-model="currentTime" ng-change="setCurrentTime()" style="display: inline-block">
+		<div class="video-control-play text-left" ng-click="togglePause()"><span
+				ng-class="{'icon-control-pause':!isPaused,'icon-control-play':!!isPaused}"></span></div>
+		<div video-control vc-width="0.9" v-width="leftColWidth" fixed-parts-width="230" class="col-xs-7">
+			<input type=range min=0 max={{duration}} ng-model="currentTime" ng-change="setCurrentTime()"
+				   style="display: inline-block">
 		</div>
 
-		<div class="video-control-mute "  ng-click="toggleMute()"><span ng-class="getVolumeIcon()"></span></div>
+		<div class="video-control-mute " ng-click="toggleMute()"><span ng-class="getVolumeIcon()"></span></div>
 		<div video-control vc-width="0.1" fixed-parts-width="230" v-width="leftColWidth" class="col-xs-2">
-			<input type=range min=0 max=1 step=0.01 ng-model="volume" ng-change="setVolume()" style="display: inline-block">
+			<input type=range min=0 max=1 step=0.01 ng-model="volume" ng-change="setVolume()"
+				   style="display: inline-block">
 		</div>
-		<div class="video-control-time text-right"  class="col-xs-1">{{convert(currentTime*1000)}} / {{convert(duration*1000,null,true)}}</div>
+		<div class="video-control-time text-right" class="col-xs-1">{{convert(currentTime*1000)}} /
+			{{convert(duration*1000,null,true)}}
+		</div>
 	</div>
 
-	<form ng-submit='loadOnlineVideo()' >
+	<form ng-submit='loadOnlineVideo()'>
 
-		<input placeholder="Paste your remote video file link here and press enter (ex. http://domain.com/somefile.mp4 OR http://www.youtube.com/watch?v=duKL2dAJN6I)" type="text" class="form-control remote-url-input" ng-class="{'hide':!!project_start,'show':!!openRemoteUrl}"  ng-model="remoteUrl" >
+		<input placeholder="Paste your remote video file link here and press enter (ex. http://domain.com/somefile.mp4 OR http://www.youtube.com/watch?v=duKL2dAJN6I)"
+			   type="text" class="form-control remote-url-input"
+			   ng-class="{'hide':!!project_start,'show':!!openRemoteUrl}" ng-model="remoteUrl">
 
 	</form>
 
@@ -85,28 +99,35 @@
 				   class="form-control main-caption-input" ng-model='newCue.text'>
 		</form>
 
-		<div class="pull-left" ng-show='editMode'><i ng-click="syncToCurrent('begin')" class="fa fa-angle-double-down new-cue-time-icon" title="sync to current frame"></i> <i ng-click="modifyTime('begin',-200)"
-													 class="fa  fa-angle-left new-cue-time-icon"
-													 title="-200ms"></i><span class="new-cue-time"
-																			  title="seek to this time"
-																			  ng-click='navigatedTo(newCue.begin,false)'>{{convert(newCue.begin)}}</span><i
+		<div class="pull-left" ng-show='editMode'><i ng-click="syncToCurrent('begin')"
+													 class="fa fa-angle-double-down new-cue-time-icon"
+													 title="sync to current frame"></i> <i
+				ng-click="modifyTime('begin',-200)"
+				class="fa  fa-angle-left new-cue-time-icon"
+				title="-200ms"></i><span class="new-cue-time"
+										 title="seek to this time"
+										 ng-click='navigatedTo(newCue.begin,false)'>{{convert(newCue.begin)}}</span><i
 				ng-click="modifyTime('begin',200)" class="fa fa-angle-right  new-cue-time-icon" title="+200ms"></i>
 		</div>
 		<div class="pull-right" ng-show='editMode'><i ng-click="modifyTime('end',-200)"
-													  class="fa fa-angle-left  new-cue-time-icon" title="-200ms"></i><span
+													  class="fa fa-angle-left  new-cue-time-icon"
+													  title="-200ms"></i><span
 				class="new-cue-time" title="seek to this time" ng-click='navigatedTo(newCue.end,false)'>{{convert(newCue.end)}}</span><i
-				ng-click="modifyTime('end',200)" class="fa fa-angle-right  new-cue-time-icon" title="+200ms"></i><i ng-click="syncToCurrent('end')" class="fa fa-angle-double-down new-cue-time-icon" title="sync to current frame"></i></div>
+				ng-click="modifyTime('end',200)" class="fa fa-angle-right  new-cue-time-icon" title="+200ms"></i><i
+				ng-click="syncToCurrent('end')" class="fa fa-angle-double-down new-cue-time-icon"
+				title="sync to current frame"></i></div>
 	</div>
 
 </div>
 
-<div drop-zone  class="right-col col-lg-3 col-md-4 col-sm-5 col-xs-12  hidden-xs" ng-class='{show:!!project_start}'>
+<div drop-zone class="right-col col-lg-3 col-md-4 col-sm-5 col-xs-12  hidden-xs" ng-class='{show:!!project_start}'>
 
 
 	<ul em-height-target class="nav nav-pills nav-stacked cue-list pull-right">
 
 
-		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer ani-fade-in-and-out" ng-class="{'active-cue':isCueActive(cue)}">
+		<li ng-repeat="cue in project.cues | orderBy:'begin' track by $index" class="pointer ani-fade-in-and-out"
+			ng-class="{'active-cue':isCueActive(cue)}">
 			<i class="fa fa-times-circle cue-delete" ng-click='removeCue(cue)'></i>
 			<span class="cue-grid cue-begin " title="seek to this time" ng-click='navigatedTo(cue.begin,false)'>{{convert(cue.begin,null,true)}}</span>
 			<span class="cue-grid cue-text" ng-click='editCue(cue)'>{{cue.text}}</span>
@@ -154,19 +175,22 @@
 <div class="col-xs-12 screen-too-small visible-xs text-center">
 
 
-	<h1 >This awesome App should be used in a larger screen. <br /><br /> After all, it's a productive tool</h1>
+	<h1>This awesome App should be used in a larger screen. <br/><br/> After all, it's a productive tool</h1>
 
 </div>
 
 
-<nav  class="sao" rule="navigation" ng-class='{show:!!project_start}'>
+<nav class="sao" rule="navigation" ng-class='{show:!!project_start}'>
 	<ol>
 
 		<li><i class="icon-paper-plane"></i>
 			<ol>
-				<li><i class="icon-social-twitter"></i><a target="_blank" ng-href="{{getShareUrl('twitter')}}">Twitter</a></li>
-				<li><i class="icon-social-facebook"></i><a target="_blank" ng-href="{{getShareUrl('facebook')}}"> Facebook</a></li>
-				<li><i class="fa fa-google-plus"></i><a target="_blank" ng-href="{{getShareUrl('google')}}"> Google+</a></li>
+				<li><i class="icon-social-twitter"></i><a target="_blank"
+														  ng-href="{{getShareUrl('twitter')}}">Twitter</a></li>
+				<li><i class="icon-social-facebook"></i><a target="_blank" ng-href="{{getShareUrl('facebook')}}">
+					Facebook</a></li>
+				<li><i class="fa fa-google-plus"></i><a target="_blank" ng-href="{{getShareUrl('google')}}"> Google+</a>
+				</li>
 			</ol>
 		</li>
 		<li><i class="icon-settings"></i>
@@ -180,14 +204,11 @@
 						<li><i class="fa fa-file-o"></i> .ssa</li>
 					</ol>
 				</li>
-				<li ng-click='removeProject()' ng-if='!!project_id' ><i class="fa fa-times"></i> Delete Project</li>
-
-
+				<li ng-click='removeProject()' ng-if='!!project_id'><i class="fa fa-times"></i> Delete Project</li>
 
 
 			</ol>
 		</li>
-
 
 
 		<li><i class="fa fa-folder-open-o"></i>
@@ -196,7 +217,8 @@
 				<li ng-click='openSub()'><i class="fa fa-file-text-o"></i> Load Caption Files (.ssa, .srt, .vtt)</li>
 
 
-				<li ng-click="openVideo()"><i class="fa fa-caret-square-o-right"></i> Load Videos (.mp4, .ogv, .webm)</li>
+				<li ng-click="openVideo()"><i class="fa fa-caret-square-o-right"></i> Load Videos (.mp4, .ogv, .webm)
+				</li>
 
 			</ol>
 		</li>

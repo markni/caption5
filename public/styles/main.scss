@@ -287,6 +287,8 @@ drop-zone {
 	}
   }
 
+
+
   .new-cue-time-icon {
 	@include transform(translateZ(0));
 	@include transition(color 200ms);
@@ -821,7 +823,8 @@ $shade4: #acdef8;
   }
 }
 
-.simulate-cues{
+.simulate-cues,{
+
   z-index: 99999;
   color:white;
   font-size:30px;
@@ -833,6 +836,23 @@ $shade4: #acdef8;
   font-family: 'Lato', '黑体';
   /*color:white;*/
   text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+}
+
+.video-title{
+
+  h1{
+	pointer-events: none;
+	z-index: 99998;
+	color:white;
+	font-size:15px;
+	position: absolute;
+	font-family: 'Lato', '黑体';
+	/*color:white;*/
+	text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+	left: 15px;
+	top: 0;
+  }
+
 }
 
 //Helper Classes

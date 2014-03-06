@@ -17,7 +17,7 @@ app.directive('youtubePlayer',function($window,$interval,YoutubeData){
 
 			//private methods
 
-			function loadYoutubeDataById(id){
+			$scope.loadYoutubeDataById = function(id){
 
 				YoutubeData.get({id:id}).$promise.then(function(video) {
 					if (video && video.items && video.items.length>0){
@@ -60,7 +60,7 @@ app.directive('youtubePlayer',function($window,$interval,YoutubeData){
 
 					$element[0].loadVideoById($scope.youtubeId);
 
-					loadYoutubeDataById($scope.youtubeId);
+					$scope.loadYoutubeDataById($scope.youtubeId);
 
 
 
@@ -135,11 +135,11 @@ app.directive('youtubePlayer',function($window,$interval,YoutubeData){
 			scope.$watch('youtubeUrl',function(newUrl,oldUrl){
 				if (newUrl) {
 					var newId = scope.extractYoutubeId(newUrl);
-					console.log(newId);
+
 					if(newId && element[0].loadVideoById){
 						element[0].loadVideoById(newId);
 
-						$scope.youtubeId(newId);
+						scope.loadYoutubeDataById(newId);
 					}
 				}
 			});
