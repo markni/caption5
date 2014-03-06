@@ -35,16 +35,16 @@
 
 		</div>
 
-
-		<video ng-show="!project_youtube"   em-height-source video-player class="video-player" ng-class='{normalize:!!project_start,loaded:!!videoUrl,"on-drag":!!onDrag}' ng-click='togglePause($event)'
+		<div ng-mousedown='togglePause($event)' ng-mouseover="videohover=true" ng-mouseleave="videohover=false">
+		<video ng-show="!project_youtube"   em-height-source video-player class="video-player" ng-class='{normalize:!!project_start,loaded:!!videoUrl,"on-drag":!!onDrag}'
 			   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%">
 
 		</video>
 
-		<div ng-mousedown='togglePause()'>
+
 		<object youtube-current-time="currentTime" youtube-duration="duration" youtube-volume="volume"
 				youtube-paused="isPaused" youtube-url="youtubeUrl" ng-show="!!project_youtube" youtube-player
-				left-col-width="leftColWidth" type="application/x-shockwave-flash" id="ytPlayer"
+				left-col-width="leftColWidth" youtube-title="project.title" type="application/x-shockwave-flash" id="ytPlayer"
 				data="http://www.youtube.com/apiplayer?enablejsapi=1&version=3" width="1250"
 				height="703.125">
 			<param name="allowScriptAccess" value="always">
@@ -52,9 +52,11 @@
 		</object>
 		</div>
 
+
+
 	</div>
 
-
+	{{volume}}
 
 	<div class="video-controls" class="col-xs-12" style="height: 20px; width: 100%;">
 		<div class="video-control-play text-left" ng-click="togglePause()"><span  ng-class="{'icon-control-pause':!isPaused,'icon-control-play':!!isPaused}"></span></div>

@@ -144,3 +144,19 @@ app.factory('Projects',function($resource){
 	return $resource('/api/projects/');
 
 });
+
+app.factory('YoutubeData',function($resource){
+
+	return $resource('https://www.googleapis.com/youtube/v3/videos?id=:id&key=:key&part=snippet', {
+		id: '@id',
+		key: '@key'
+	}, { //parameters default
+		get: {
+			method: 'GET',
+			params: {
+				key:'AIzaSyB3BzYUE4RZsV9HBdL_GUMNm7CcHJbqEZ8'
+			}
+		}
+	});
+
+});

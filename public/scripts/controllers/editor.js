@@ -1,4 +1,4 @@
-app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth, $rootScope) {
+app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth, $rootScope, YoutubeData) {
 
 	var v = document.getElementById('video');
 	var y = document.getElementById('ytPlayer');
@@ -867,17 +867,32 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 	$scope.toggleMute = function(){
 		//it's easier not use HTML5 muted api here because it requires two models to control
-		if(v.volume){
-			$scope.oldVolume = v.volume;
-			v.volume = 0;
+		if($scope.project_youtube){
+			if($scope.volume){
+				$scope.oldVolume = $scope.volume;
+				$scope.volume = 0;
+				v.volume = 0;
+
+			}
+			else {
+				$scope.volume = $scope.oldVolume;
+				v.volume = $scope.oldVolume;
+			}
 		}
-		else {
+		else{
+			if(v.volume){
+				$scope.oldVolume = v.volume;
+				v.volume = 0;
+			}
+			else {
 
-			v.volume = $scope.oldVolume;
-			$scope.volume = $scope.oldVolume;
+				v.volume = $scope.oldVolume;
+				$scope.volume = $scope.oldVolume;
 
 
+			}
 		}
+
 	};
 
 	$scope.getVolumeIcon = function(){
