@@ -1,8 +1,6 @@
 app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $location, $routeParams, Project, Projects, Auth, $rootScope, YoutubeData) {
 
-	var v = document.getElementById('video');
-	var y = document.getElementById('ytPlayer');
-	var ytplayer;
+
 
 
 	$scope.system_msg = null;
@@ -112,7 +110,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 					}
 					else{
 						$scope.videoUrl =  $sce.trustAsResourceUrl(project.remote);
-						$timeout(function(){v.pause();	$scope.reloadTrack($scope.project.cues);},500);
+						$timeout(function(){$scope.isPaused= true;	$scope.reloadTrack($scope.project.cues);},500);
 					}
 
 
@@ -189,11 +187,11 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 		$scope.project_start = true;
 		$scope.openRemoteUrl = false;
-		v.pause();//stop video
+		$scope.isPaused = true;
+
 
 		$scope.showMsg('Move your cursor here to show project menu.');
 
-		//v.currentTime = 0;//reset video to the beginning
 	};
 
 	//trigger click on the real file selector from the fake button
@@ -219,26 +217,12 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	$scope.togglePause = function (event) {
 
 
-
-
-
-
 		if ($scope.project_start){
 			if (event){
 				event.preventDefault(); //firefox already has this behaviour
 			}
 
-
-
-			if ($scope.project_youtube){
-
-				$scope.isPaused = !$scope.isPaused;
-
-			}
-
-			else{
-				v.paused ? v.play() : v.pause();
-			}
+			$scope.isPaused = !$scope.isPaused;
 
 
 		}
@@ -386,17 +370,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	$scope.navigatedTo = function (milli, autoplay) {
 //		console.log(milli);
 		var seconds =  milli / 1000;
-
-		if ($scope.project_youtube){
-			$scope.$broadcast('setcurrenttime', [seconds]);
-		}
-		else{
-
-			v.currentTime = seconds;
-			autoplay && v.play();
-			!autoplay && v.pause();
-		}
-
+		$scope.$broadcast('setcurrenttime', [seconds]);
 
 	};
 
@@ -406,14 +380,8 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 		if ($scope.newCue.text) {
 //			console.log('x');
 			if (!$scope.editMode) {
-				if($scope.project_youtube){
-					$scope.newCue.begin = parseInt($scope.currentTime * 1000);
-					$scope.newCue.end = parseInt($scope.currentTime * 1000) + avgDelay;
-				}
-				else{
-					$scope.newCue.begin = parseInt(v.currentTime * 1000);
-					$scope.newCue.end = parseInt(v.currentTime * 1000) + avgDelay;
-				}
+				$scope.newCue.begin = parseInt($scope.currentTime * 1000);
+				$scope.newCue.end = parseInt($scope.currentTime * 1000) + avgDelay;
 
 //				console.log($scope.newCue);
 				$scope.project.cues.push($scope.newCue);
@@ -430,12 +398,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 		}
 
-		if($scope.project_youtube){
-			v.play();
-		}
-		else{
-			$scope.isPaused = false;
-		}
+		$scope.isPaused = false;
 
 
 	};
@@ -443,12 +406,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 	$scope.onEdit = function (evt) {
 //		console.log(evt.which);
 		if (evt.which !== 13) {
-			if($scope.project_youtube){
-				$scope.isPaused = true;
-			}
-			else{
-				v.pause();
-			}
+			$scope.isPaused = true;
 
 
 		}
@@ -711,7 +669,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 			//debugger;
 			output += $scope.convert(array[i].begin, '.') + ' --> ';
 
-			var next = (array[i + 1] === undefined) ? convertSec(v.duration || 0) : array[i + 1].begin;
+			var next = (array[i + 1] === undefined) ? convertSec($scope.duration || 0) : array[i + 1].begin;
 			if (next === undefined) debugger;
 			next = next ? next - 1 : next;
 			output += $scope.convert((array[i].end) ? (array[i].end) : next, '.');
@@ -733,7 +691,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 			//debugger;
 			output += $scope.convert(array[i].begin) + ' --> ';
 
-			var next = (array[i + 1] === undefined) ? convertSec(v.duration || 0) : array[i + 1].begin;
+			var next = (array[i + 1] === undefined) ? convertSec($scope.duration || 0) : array[i + 1].begin;
 			if (next === undefined) debugger;
 			next = next ? next - 1 : next;
 
@@ -749,7 +707,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 	$scope.getCueFontSize = function(){
 		return {'font-size':parseInt($scope.leftColWidth) /45 + 'px'};
-	}
+	};
 
 	$scope.isCueActive = function(cue){
 		if ($scope.currentTime * 1000>=cue.begin && $scope.currentTime * 1000 <= cue.end ){
@@ -800,10 +758,6 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 
 	$scope.onTimeUpdate = function(){
 
-		if(!$scope.project_youtube){
-			$scope.currentTime = v.currentTime;
-		}
-
 		var flag = false;
 		var currentTime = $scope.currentTime * 1000;
 		$scope.currentCues = [];
@@ -820,85 +774,36 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 			$scope.currentCues = [];
 		}
 
-//		$scope.$apply();
-	};
 
-	$scope.onPause = function(){
-		if(!$scope.project_youtube){
-		$scope.isPaused = true;
-		$scope.$apply();
-		}
 	};
 
 
-	$scope.onPlay = function(){
-		if(!$scope.project_youtube){
-		$scope.duration = v.duration;
-		$scope.isPaused = false;
-		$scope.$apply();
-		}
-	};
-
-	$scope.onVolumeChange = function(){
-		if(!$scope.project_youtube){
-		$scope.volume = v.volume;
-		$scope.$apply();
-		}
-	};
 
 
-	$scope.setVolume = function(){
-		v.volume = $scope.volume;
-	};
+
 
 	$scope.setCurrentTime= function(){
-		if($scope.project_youtube){
-
-			$scope.$broadcast('setcurrenttime', [$scope.currentTime]);
-
-		}
-		else{
-			v.currentTime = $scope.currentTime;
-		}
-
-
-
+		$scope.$broadcast('setcurrenttime', [$scope.currentTime,$scope.project_youtube]);
 	};
 
 	$scope.toggleMute = function(){
 		//it's easier not use HTML5 muted api here because it requires two models to control
-		if($scope.project_youtube){
-			if($scope.volume){
-				$scope.oldVolume = $scope.volume;
-				$scope.volume = 0;
-				v.volume = 0;
+		if($scope.volume){
+			$scope.oldVolume = $scope.volume;
+			$scope.volume = 0;
 
-			}
-			else {
-				$scope.volume = $scope.oldVolume;
-				v.volume = $scope.oldVolume;
-			}
 		}
-		else{
-			if(v.volume){
-				$scope.oldVolume = v.volume;
-				v.volume = 0;
-			}
-			else {
+		else {
+			$scope.volume = $scope.oldVolume;
 
-				v.volume = $scope.oldVolume;
-				$scope.volume = $scope.oldVolume;
-
-
-			}
 		}
 
 	};
 
 	$scope.getVolumeIcon = function(){
 
-		if (v.volume){
-			if (v.volume > 0.8) {
+		if ($scope.volume){
+			if ($scope.volume > 0.8) {
 				return 'icon-volume-2';
 			}
 			else {
@@ -944,7 +849,7 @@ app.controller('editorCtrl', function ($scope, $route, $timeout, $http, $sce, $l
 //
 //	});
 
-	v.volume = 0.2; //prevent too loud video
+	$scope.volume = 0.2; //prevent too loud video
 
 	$scope.loadProject();
 	if (Auth.isLoggedIn()){

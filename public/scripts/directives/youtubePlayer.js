@@ -17,23 +17,13 @@ app.directive('youtubePlayer',function($window,$interval,YoutubeData){
 
 			//private methods
 
-			$scope.loadYoutubeDataById = function(id){
-
-				YoutubeData.get({id:id}).$promise.then(function(video) {
-					if (video && video.items && video.items.length>0){
-						$scope.youtubeTitle =  video.items[0].snippet.title || "Youtube Video";
-					}
-				}, function(errResponse) {
-					console.log(errResponse);// fail
-				});
-			}
-
 			function updatePlayerInfo() {
 				// Also check that at least one function exists since when IE unloads the
 				// page, it will destroy the SWF before clearing the interval.
 
 
 				if($element[0] && $element[0].getDuration) {
+
 					$scope.youtubeDuration = parseInt($element[0].getDuration());
 				}
 
@@ -45,11 +35,14 @@ app.directive('youtubePlayer',function($window,$interval,YoutubeData){
 
 			}
 
+			//auto resize on load;
 			function _run() {
 				$element[0].width =  $scope.videoWidth;
 				$element[0].height =  $scope.videoWidth*9/16;
 			}
 
+
+			//global method for youtube player api callback;
 
 			$window.onYouTubePlayerReady = function(playerId) {
 
@@ -82,6 +75,16 @@ app.directive('youtubePlayer',function($window,$interval,YoutubeData){
 			};
 
 
+			$scope.loadYoutubeDataById = function(id){
+
+				YoutubeData.get({id:id}).$promise.then(function(video) {
+					if (video && video.items && video.items.length>0){
+						$scope.youtubeTitle =  video.items[0].snippet.title || "Youtube Video";
+					}
+				}, function(errResponse) {
+					console.log(errResponse);// fail
+				});
+			};
 
 			$scope.extractYoutubeId = function(url){
 				url = url.toString();
@@ -105,13 +108,13 @@ app.directive('youtubePlayer',function($window,$interval,YoutubeData){
 		link:function (scope, element, attrs){
 
 			scope.$watch('youtubeVolume',function(newV,oldV){
+				//setVolume is part of YOUTUBE API, needs convert to 1-100 before use
+
 				newV = parseFloat(newV);
 
 				if (typeof newV == "number" && element[0].setVolume){
 					var v = parseInt(newV*100);
-					console.log(v);
-
-					element[0].setVolume(v);
+                	element[0].setVolume(v);
 				}
 
 
@@ -158,11 +161,12 @@ app.directive('youtubePlayer',function($window,$interval,YoutubeData){
 
 				var seconds = parseFloat(mass[0]);
 
+				if (mass[1]){
+					if (typeof seconds  == 'number' && !isNaN(seconds) ){
 
-				if (typeof seconds  == 'number' && !isNaN(seconds) ){
+						element[0].seekTo(seconds,true);
 
-					element[0].seekTo(seconds,true);
-
+					}
 				}
 			});
 

@@ -43,7 +43,7 @@
 		</div>
 
 		<div ng-mousedown='togglePause($event)' ng-mouseover="videohover=true" ng-mouseleave="videohover=false">
-			<video ng-show="!project_youtube" em-height-source video-player class="video-player"
+			<video ng-show="!project_youtube" em-height-source video-player video-current-time="currentTime"  video-volume="volume" video-paused="isPaused" video-duration="duration" class="video-player"
 				   ng-class='{normalize:!!project_start,loaded:!!videoUrl,"on-drag":!!onDrag}'
 				   id="video" ng-src="{{videoUrl}}" autoplay="autoplay" style="width:100%">
 
@@ -75,8 +75,7 @@
 
 		<div class="video-control-mute " ng-click="toggleMute()"><span ng-class="getVolumeIcon()"></span></div>
 		<div video-control vc-width="0.1" fixed-parts-width="230" v-width="leftColWidth" class="col-xs-2">
-			<input type=range min=0 max=1 step=0.01 ng-model="volume" ng-change="setVolume()"
-				   style="display: inline-block">
+			<input type=range min=0 max=1 step=0.01 ng-model="volume" style="display: inline-block">
 		</div>
 		<div class="video-control-time text-right" class="col-xs-1">{{convert(currentTime*1000)}} /
 			{{convert(duration*1000,null,true)}}
@@ -91,6 +90,10 @@
 
 	</form>
 
+	<!--currentTime:{{currentTime}}-->
+	<!--duration:{{duration}}-->
+	<!--paused: {{isPaused}}-->
+	<!--volume: {{volume}}-->
 
 	<div class="form-group sub-editor" ng-class='{show:!!project_start}'>
 		<form ng-submit='createCue()'>
@@ -169,7 +172,11 @@
 	<!--debug:-->
 	<!--<textarea id="debug" rows='10'></textarea>-->
 
+
 </div>
+
+
+<!-- screen too small -->
 
 
 <div class="col-xs-12 screen-too-small visible-xs text-center">
@@ -178,6 +185,8 @@
 	<h1>This awesome App should be used in a larger screen. <br/><br/> After all, it's a productive tool</h1>
 
 </div>
+
+<!-- left bottom menu -->
 
 
 <nav class="sao" rule="navigation" ng-class='{show:!!project_start}'>
