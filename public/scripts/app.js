@@ -50,8 +50,12 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
 	$httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {
 		return {
 			'responseError': function (response) {
+
 				if (response.status === 401 || response.status === 403) {
-					$location.path('/login');
+
+					if (response.config && response.config.url.search($location.host())!=-1)   {
+						$location.path('/login');
+					}
 					return $q.reject(response);
 				}
 				else {
